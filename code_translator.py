@@ -3,7 +3,7 @@ import ollama  # Ensure the Ollama module is installed and running locally
 from pathlib import Path
 
 # Hardcoded folder path and target language
-FOLDER_PATH = '/home/ubuntu/Projects/hackathon/CodeEvolver/legacyproject/'  # <-- Set your folder path here
+FOLDER_PATH = './legacyproject/'  # <-- Set your folder path here
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
 
 # Function to get files based on extensions

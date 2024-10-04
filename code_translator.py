@@ -59,8 +59,8 @@ def main(folder_path, target_language='Java'):
     # Get all files that need to be processed (Python, COBOL, Java)
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))
     
-    # Output folder for transformed files
-    output_folder = os.path.join(folder_path, 'transformed')
+    # Output folder for transformed/translated files
+    output_folder = os.path.join(folder_path, 'translated')
 
     for file_path in source_files:
         print(f"Processing {file_path}")

@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 17
+Specification-Title: Pipeline: Supporting APIs
+Specification-Version: 0.0
+Implementation-Title: Pipeline: Supporting APIs
+Implementation-Version: 926.v9f4f9b_b_98c19
+Group-Id: org.jenkins-ci.plugins.workflow
+Artifact-Id: workflow-support
+Short-Name: workflow-support
+Long-Name: Pipeline: Supporting APIs
+Url: https://github.com/jenkinsci/workflow-support-plugin
+Compatible-Since-Version: 3.0
+Plugin-Version: 926.v9f4f9b_b_98c19
+Hudson-Version: 2.440.3
+Jenkins-Version: 2.440.3
+Plugin-Dependencies: caffeine-api:3.1.8-133.v17b_1ff2e0599,workflow-api:
+ 1322.v857eeeea_9902,workflow-step-api:678.v3ee58b_469476,scm-api:696.v7
+ 78d637b_a_762,script-security:1341.va_2819b_414686
+Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/workflow-supp
+ ort-plugin.git
+Plugin-ScmTag: 9f4f9bb98c1994a8e0958a8002e0c99d71956cda
+Plugin-ScmUrl: https://github.com/jenkinsci/workflow-support-plugin
+Plugin-GitHash: 9f4f9bb98c1994a8e0958a8002e0c99d71956cda
+Implementation-Build: 9f4f9bb98c1994a8e0958a8002e0c99d71956cda
+

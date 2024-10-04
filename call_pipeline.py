@@ -2,9 +2,9 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 # URL and credentials
-url = "http://localhost:8060/job/test/build"
+url = "http://localhost:8080/job/test/build"
 username = "Izanagi"
-api_token = "11220636890f16b515ccaf259a205f448c"
+api_token = "1133c548af7366c093ec56d1152234a9b6"
 
 # Data to be sent in the POST request
 data = {"token": api_token}

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Plugin-Dependencies: maven-plugin:3.23;resolution:=optional,git:4.9.4;re
+ solution:=optional,jackson2-api:2.16.1-373.ve709c6871598,structs:325.vc
+ b_307d2a_2782,workflow-api:1283.v99c10937efcb_,workflow-cps:3837.v30519
+ 2405b_c0,workflow-job:1326.ve643e00e9220,workflow-basic-steps:1042.ve7b
+ _140c4a_e0c,workflow-durable-task-step:1313.vcb_970b_d2a_fb_3,workflow-
+ step-api:639.v6eca_cd8c04a_a_,credentials:1311.vcf0a_900b_37c2,plain-cr
+ edentials:143.v1b_df8b_d3b_e48,okhttp-api:4.11.0-157.v6852a_a_fa_ec11
+Group-Id: org.jenkins-ci.plugins
+Minimum-Java-Version: 11
+Short-Name: gradle
+Extension-Name: gradle
+Long-Name: Gradle Plugin
+Jenkins-Version: 2.401.3
+Url: https://github.com/jenkinsci/gradle-plugin
+Compatible-Since-Version: 1.0
+Plugin-Version: 2.13
+Plugin-Developers: Stefan Wolf:wolfs:
+

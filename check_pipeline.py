@@ -40,7 +40,7 @@ def is_job_finished(job_url, base_build_url, username, api_token):
 
 
 username = "Izanagi"
-api_token = "11220636890f16b515ccaf259a205f448c"
-jenkins_job_url = "http://localhost:8060/job/test/api/json"
-jenkins_build_url = "http://localhost:8060/job/test"
+api_token = "1133c548af7366c093ec56d1152234a9b6"
+jenkins_job_url = "http://localhost:8080/job/test/api/json"
+jenkins_build_url = "http://localhost:8080/job/test"
 is_job_finished(jenkins_job_url, jenkins_build_url, username, api_token)

@@ -1,0 +1,102 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1436.vfa_244484591f">
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3969.vdc9d3a_efcc6a_">
+    <script>pipeline {
+    agent any
+    tools {
+        maven &apos;maven3.9.9&apos; // Nome che hai dato all&apos;installazione Maven
+    }
+
+    environment {
+        PROJECT_PATH = &apos;/var/jenkins_home/workspace/test&apos;  // Specifica il path del progetto
+    }
+    stages {
+        stage(&apos;Build&apos;) {
+            steps {
+                dir(&quot;${PROJECT_PATH}&quot;) {
+                    sh &apos;mvn -B -DskipTests clean package&apos;  // Esegui Maven dalla directory del progetto
+                }            }
+        }
+        stage(&apos;Test&apos;) { 
+            steps {
+                dir(&quot;${PROJECT_PATH}&quot;) {
+                    sh &apos;mvn test&apos;  // Esegui i test
+                }            
+			}
+        }
+            /*    
+		stage(&apos;Test Results&apos;) {
+            steps {
+                junit &apos;/var/jenkins_home/workspace/test/target/surefire-reports/*.xml&apos;
+            }
+        }
+    
+        stage(&apos;Allure Report&apos;) {
+            steps {
+                allure([
+                    reportBuildPolicy: &apos;ALWAYS&apos;,
+                    results: [[path: &apos;build/allure-results&apos;]]
+                ])
+            }
+        }
+
+
+		stage(&apos;Performance Test&apos;) {
+            steps {
+
+                sh &apos;jmeter -n -t path/to/your/test.jmx -l path/to/your/results.jtl&apos;
+            }
+        }
+
+        stage(&apos;Publish Performance Report&apos;) {
+            steps {
+                performance {
+                    sourceFiles &apos;path/to/your/results.jtl&apos;
+                }
+            }
+        }
+		stage(&apos;Publish Security Report&apos;) {
+            steps {
+
+                archiveArtifacts artifacts: &apos;zap_report.html&apos;, allowEmptyArchive: true
+                publishHTML(target: [
+                    reportName: &apos;ZAP Security Report&apos;,
+                    reportDir: &apos;&apos;,
+                    reportFiles: &apos;zap_report.html&apos;,
+                    keepAll: true
+                ])
+			
+            }
+        }
+
+		
+        stage(&apos;SonarQube Analysis&apos;) {
+            steps {
+                script {
+                    def scannerHome = tool name: &apos;SonarQube Scanner&apos;, type: &apos;hudson.plugins.sonar.SonarRunnerInstallation&apos;
+                    sh &quot;${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my-app -Dsonar.sources=src -Dsonar.host.url=http://your-sonarqube-server -Dsonar.login=your_token&quot;
+                }
+            }
+        }
+        stage(&apos;Static Code Analysis&apos;) {
+            steps {
+                sh &apos;mvn spotbugs:check&apos;
+            }
+        }
+        
+        stage(&apos;FindSecBugs Analysis&apos;) {
+            steps {
+                sh &apos;mvn findsecbugs:check&apos;
+            }
+        }
+                	*/
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

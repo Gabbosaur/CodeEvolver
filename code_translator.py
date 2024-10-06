@@ -12,7 +12,8 @@ LLM_MODE = os.getenv('LLM_MODE')
 
 client = None
 if LLM_MODE == 'GROQ':
-    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+    print(os.getenv("GROQ_API_KEY"))
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Hardcoded folder path and target language
 FOLDER_PATH = './legacyproject/'  # <-- Set your folder path here
@@ -58,7 +59,6 @@ def extract_java_code(text):
 
 def translate_code_with_groq(source_code, source_language, target_language='Java'):
     prompt = f"Translate the following {source_language} code to {target_language}, please generate only one java code block and don't propose multiple solutions:\n\n{source_code}"
-
     # Call Groq's API with the given prompt
     try:
         chat_completion = client.chat.completions.create(
@@ -75,10 +75,12 @@ def translate_code_with_groq(source_code, source_language, target_language='Java
 
         # Extract the Java code using the find() method
         improved_code = extract_java_code(response_text)
+    
+        print(improved_code)
         return improved_code, response_text  # Return both the code and the full response
 
     except Exception as e:
-        print(f"Error during code improvement: {e}")
+        print(f"Error during code translation: {e}")
         return None, None
 
 # Function to determine the language of the source file based on its extension
@@ -98,7 +100,7 @@ def write_transformed_code(output_folder, file_path, transformed_code):
     file_name = Path(file_path).stem + ".java"
     output_path = os.path.join(output_folder, file_name)
     
-    print(transformed_code)
+    print("transformed_code:\n" + transformed_code)
     with open(output_path, 'w') as f:
         f.write(transformed_code)
     
@@ -127,7 +129,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
 
         if LLM_MODE == 'GROQ':
             # Translate the code using Groq 
-            translated_code = translate_code_with_groq(source_code, source_language, target_language)
+            translated_code, response_text = translate_code_with_groq(source_code, source_language, target_language)
         else:
             # Translate the code using Ollama
             translated_code = translate_code_with_ollama(source_code, source_language, target_language)

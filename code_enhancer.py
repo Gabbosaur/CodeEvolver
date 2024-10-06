@@ -9,7 +9,7 @@ LLM_MODE = os.getenv('LLM_MODE')
 
 client = None
 if LLM_MODE == 'GROQ':
-    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 def read_java_file(file_path):
     try:

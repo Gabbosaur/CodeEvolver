@@ -19,7 +19,7 @@ def read_root():
 
 @app.post("/translate/")
 def translate(body: Body):
-    translater("./legacyproject") 
+    translater(body.url) 
     return {"Hello": "World"}
 
 @app.post("/enhance/")

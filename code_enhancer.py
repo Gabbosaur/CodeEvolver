@@ -51,7 +51,7 @@ def improve_code_with_groq(java_code):
     prompt = f"""
     Improve the following Java code, while maintaining the same functionality.
     Focus on better code structure, formatting, and refactoring, ensuring readability and best practices for object oriented programming.
-    Don't change the class name and remove unused variables.
+    Don't change the class name.
 
     Here is the code:
     ```java
@@ -67,7 +67,7 @@ def improve_code_with_groq(java_code):
             messages=[
                 {"role": "system", "content": "You're an expert Java developer."},
                 {"role": "user", "content": prompt},
-                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.8.6.4, findsecbugs and junit"}
+                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.8.6 and junit"}
             ],
             model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
             temperature=0
@@ -90,13 +90,8 @@ def write_pom_file(input_code, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-        os.makedirs(output_folder + "/test")
-        os.makedirs(output_folder + "/src")
-    if is_test:
-        output_folder = "evolved/test"
-    else:
-        output_folder = "evolved"
+        os.makedirs(output_folder + "/src/test/java")
+        os.makedirs(output_folder + "/src/main/java")
     
     file_name = "pom.xml"
     improved_file_path = os.path.join(output_folder, file_name)
@@ -113,13 +108,12 @@ def write_improved_java_file(original_file_path, improved_code, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-        os.makedirs(output_folder + "/test")
-        os.makedirs(output_folder + "/src")
+        os.makedirs(output_folder + "/src/test/java")
+        os.makedirs(output_folder + "/src/main/java")
     if is_test:
-        output_folder = "evolved/test"
+        output_folder = "evolved/src/test/java"
     else:
-        output_folder = "evolved/src"
+        output_folder = "evolved/src/main/java"
     
     # Extract file name from the original path and construct the new file path
     file_name = os.path.basename(original_file_path)
@@ -141,13 +135,12 @@ def write_improvement_summary(original_file_path, response_text, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-        os.makedirs(output_folder + "/test")
-        os.makedirs(output_folder + "/src")
+        os.makedirs(output_folder + "/src/test/java")
+        os.makedirs(output_folder + "/src/main/java")
     if is_test:
-        output_folder = "evolved/test"
+        output_folder = "evolved/src/test/java"
     else:
-        output_folder = "evolved/src"
+        output_folder = "evolved/src/main/java"
     
     # Generate a summary file path based on the original file
     file_name = os.path.basename(original_file_path)
@@ -157,7 +150,8 @@ def write_improvement_summary(original_file_path, response_text, is_test):
     try:
         with open(summary_file_path, 'w') as summary_file:
             summary_file.write("The following improvements were made by the LLM:\n")
-            summary_file.write(remove_multiple_newlines(response_text.split("```")[-1]))
+            summary_file.write(response_text)
+            # summary_file.write(remove_multiple_newlines(response_text.split("```")[-1]))
         print(f"Improvement summary saved at: {summary_file_path}")
     except Exception as e:
         print(f"Error writing the improvement summary: {e}")

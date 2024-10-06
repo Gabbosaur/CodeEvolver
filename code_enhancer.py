@@ -1,7 +1,15 @@
 import os
 from groq import Groq
+from dotenv import load_dotenv
 
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+load_dotenv()
+
+LLM_MODE = os.getenv('LLM_MODE')
+
+
+client = None
+if LLM_MODE == 'GROQ':
+    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 def read_java_file(file_path):
     try:
@@ -114,6 +122,8 @@ def improve_java_file(file_path):
     # Step 4: Write the improvement summary to a separate text file
     write_improvement_summary(file_path, response_text)
 
-# Example usage
-java_file_path = "/home/ubuntu/Projects/hackathon/CodeEvolver/translated/TrimethiusCipher.java"  # Provide the path to your Java file
-improve_java_file(java_file_path)
+def main(java_file_path = "/home/ubuntu/Projects/hackathon/CodeEvolver/translated/TrimethiusCipher.java" ):
+    improve_java_file(java_file_path)
+
+if __name__ == "__main__":
+    main()

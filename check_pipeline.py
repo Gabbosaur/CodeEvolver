@@ -1,5 +1,12 @@
 import time
 import requests
+import os
+
+username = os.getenv("JENKINS_USERNAME")
+api_token = os.getenv("JENKINS_API")
+jenkins_job_url = os.getenv("JENKINS_JOB_URL")
+jenkins_build_url = os.getenv("JENKINS_BUILD_BASE_URL")
+
 
 def is_job_finished(job_url, base_build_url, username, api_token):
     # Poll Jenkins to check the status of the last build
@@ -39,8 +46,8 @@ def is_job_finished(job_url, base_build_url, username, api_token):
        return f"Failed to get console output. Status code: {console_response.status_code}"
 
 
-username = "Izanagi"
-api_token = "1133c548af7366c093ec56d1152234a9b6"
-jenkins_job_url = "http://localhost:8080/job/test/api/json"
-jenkins_build_url = "http://localhost:8080/job/test"
-is_job_finished(jenkins_job_url, jenkins_build_url, username, api_token)
+def main():
+    is_job_finished(jenkins_job_url, jenkins_build_url, username, api_token)
+
+if __name__ == "__main__":
+    main()

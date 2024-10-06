@@ -44,5 +44,5 @@ def evolve(body: Body):
     translate(body)
     enhance()
     move_to_pipeline()       
-    # call_pipeline()
-    # return check_pipeline()
+    call_pipeline()
+    return check_pipeline()

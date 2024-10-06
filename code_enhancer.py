@@ -67,7 +67,7 @@ def improve_code_with_groq(java_code):
             messages=[
                 {"role": "system", "content": "You're an expert Java developer."},
                 {"role": "user", "content": prompt},
-                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs, findsecbugs and junit"}
+                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.8.6.4, findsecbugs and junit"}
             ],
             model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
             temperature=0

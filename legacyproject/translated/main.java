@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class TrimethiusCipher {
+public class Main {
 
     private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
     private static final int MAX_SIZE = 2000;
@@ -30,8 +30,8 @@ public class TrimethiusCipher {
         String filename = scanner.nextLine();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
             StringBuilder inStr = new StringBuilder();
+            String line;
             while ((line = reader.readLine()) != null) {
                 inStr.append(line).append("\n");
             }
@@ -46,14 +46,6 @@ public class TrimethiusCipher {
                 vwork.append(word).append(" ");
             }
             inStr = new StringBuilder(vwork.toString().trim());
-
-            // User-input is still 2000 chars long, so we need to cut the right-trailing spaces
-            String[] inStrArray = inStr.toString().split("\\s+");
-            StringBuilder tempStr = new StringBuilder();
-            for (String word : inStrArray) {
-                tempStr.append(word);
-            }
-            inStr = new StringBuilder(tempStr.toString());
 
             System.out.println("Text: " + inStr.toString());
 

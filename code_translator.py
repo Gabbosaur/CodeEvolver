@@ -3,6 +3,7 @@ import ollama  # Ensure the Ollama module is installed and running locally
 from pathlib import Path
 from groq import Groq
 from dotenv import load_dotenv
+import re
 
 
 load_dotenv()
@@ -93,13 +94,28 @@ def detect_language(file_path):
         return 'Java'
     else:
         return None
+    
+def replace_class_name(java_code: str, new_class_name: str) -> str:
+    # Use a regex pattern to find the class name
+    pattern = r'\bclass\s+(\w+)\b'
+    match = re.search(pattern, java_code)
+    
+    if match:
+        old_class_name = match.group(1)  # Get the old class name
+        # Replace the old class name with the new class name
+        updated_code = java_code.replace(old_class_name, new_class_name)
+        return updated_code
+    else:
+        # raise ValueError("No class name found in the provided Java code.")
+        return java_code
 
 # Function to write the translated code to a file
 def write_transformed_code(output_folder, file_path, transformed_code):
     os.makedirs(output_folder, exist_ok=True)
     file_name = Path(file_path).stem + ".java"
-    output_path = os.path.join(output_folder, file_name)
+    output_path = os.path.join(output_folder, file_name.capitalize())
     
+    transformed_code = replace_class_name(transformed_code, file_name.split('.')[0].capitalize())
     print("transformed_code:\n" + transformed_code)
     with open(output_path, 'w') as f:
         f.write(transformed_code)
@@ -131,6 +147,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
             # Translate the code using Groq 
             translated_code, response_text = translate_code_with_groq(source_code, source_language, target_language)
         else:
+            # TODO ollama should have the same behavior as groq
             # Translate the code using Ollama
             translated_code = translate_code_with_ollama(source_code, source_language, target_language)
         

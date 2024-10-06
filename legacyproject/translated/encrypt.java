@@ -1,4 +1,4 @@
-public class TrimethiusCipher {
+public class Encrypt {
 
     public static void main(String[] args) {
         String inputText = "Function";
@@ -22,7 +22,7 @@ public class TrimethiusCipher {
         int pos = 0;
         int num = 1;
 
-        for (char c : inputText.toCharArray()) {
+        for (char c : inputText.toLowerCase().toCharArray()) {
             if (Character.isLetter(c)) {
                 // Find the position of the letter to replace it with
                 int charPos = c - 'a';

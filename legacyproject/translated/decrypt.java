@@ -1,4 +1,4 @@
-public class TrimethiusCipher {
+public class Decrypt {
     public static void main(String[] args) {
         String inputText = "Function";
         String decryptedText = decrypt(inputText);
@@ -14,7 +14,7 @@ public class TrimethiusCipher {
                 int row = pos / 26;
                 int col = pos % 26;
                 char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-                decryptedText.append(alphabet[row * 26 + col]);
+                decryptedText.append(alphabet[col]);
             } else {
                 decryptedText.append(tempChar);
             }

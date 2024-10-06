@@ -5,7 +5,6 @@ from groq import Groq
 from dotenv import load_dotenv
 import re
 
-
 load_dotenv()
 
 LLM_MODE = os.getenv('LLM_MODE')
@@ -51,16 +50,21 @@ def extract_java_code(text):
     start = text.find("```java") + len("```java")
     end = text.find("```", start)
 
+    new_text = text[end+1:]
+    start_test = new_text.find("```java") + len("```java")
+    end_test = new_text.find("```", start_test)
+
     if start != -1 and end != -1:
         # Extract the Java code and remove leading/trailing whitespaces
         java_code_extracted = text[start:end].strip()
-        return java_code_extracted
+        java_test_extracted = new_text[start_test:end_test].strip()
+        return java_code_extracted, java_test_extracted
     else:
         print("No valid Java code block found in the text.")
         return None
 
-def translate_code_with_groq(source_code, source_language, target_language='Java'):
-    prompt = f"Translate the following {source_language} code to {target_language}, please generate only one java code block and don't propose multiple solutions:\n\n{source_code}"
+def translate_code_with_groq(source_code, source_language, file_path, target_language='Java'):
+    prompt = f"Translate the following {source_language} code to {target_language}, please generate only one java code block and don't propose multiple solutions and create junit tests and rename the class name with {Path(file_path).stem.capitalize()}:\n\n{source_code}"
     # Call Groq's API with the given prompt
     try:
         chat_completion = client.chat.completions.create(
@@ -74,12 +78,10 @@ def translate_code_with_groq(source_code, source_language, target_language='Java
 
         # Extract the response content
         response_text = chat_completion.choices[0].message.content.strip()
-
         # Extract the Java code using the find() method
-        improved_code = extract_java_code(response_text)
+        improved_code, test_suite = extract_java_code(response_text)
     
-        print(improved_code)
-        return improved_code, response_text  # Return both the code and the full response
+        return improved_code, test_suite, response_text  # Return both the code and the full response
 
     except Exception as e:
         print(f"Error during code translation: {e}")
@@ -111,15 +113,18 @@ def replace_class_name(java_code: str, new_class_name: str) -> str:
         return java_code
 
 # Function to write the translated code to a file
-def write_transformed_code(output_folder, file_path, transformed_code):
+def write_transformed_code(output_folder, file_path, transformed_code, test_suite):
     os.makedirs(output_folder, exist_ok=True)
-    file_name = Path(file_path).stem + ".java"
-    output_path = os.path.join(output_folder, file_name.capitalize())
+    file_name = Path(file_path).stem.capitalize() + ".java"
+    file_name_test = Path(file_path).stem.capitalize() + "Test.java"
+    output_path = os.path.join(output_folder, file_name)        
+    output_path_test = os.path.join(output_folder, file_name_test)
     
-    transformed_code = replace_class_name(transformed_code, file_name.split('.')[0].capitalize())
-    print("transformed_code:\n" + transformed_code)
     with open(output_path, 'w') as f:
         f.write(transformed_code)
+
+    with open(output_path_test, 'w') as f:
+        f.write(test_suite)
     
     print(f"Translated code written to {output_path}")
 
@@ -146,14 +151,14 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
 
         if LLM_MODE == 'GROQ':
             # Translate the code using Groq 
-            translated_code, response_text = translate_code_with_groq(source_code, source_language, target_language)
+            translated_code, test_suite, response_text = translate_code_with_groq(source_code, source_language, file_path, target_language)
         else:
             # TODO ollama should have the same behavior as groq
             # Translate the code using Ollama
             translated_code = translate_code_with_ollama(source_code, source_language, target_language)
         
         # Write the transformed code to the output folder
-        write_transformed_code(output_folder, file_path, translated_code)
+        write_transformed_code(output_folder, file_path, translated_code, test_suite)
 
 # Run the main function with the hardcoded folder path and target language
 if __name__ == '__main__':

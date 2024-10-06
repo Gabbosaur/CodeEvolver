@@ -24,7 +24,8 @@ def translate(body: Body):
 
 @app.post("/enhance/")
 def enhance():
-    enhancer() 
+    enhancer()
+    # enhancer("./evolved") 
     return {"Hello": "World"}
 
 @app.post("/call_pipeline/")
@@ -40,6 +41,7 @@ def check_pipeline_endpoint():
 @app.post("/evolve/")
 def evolve(body: Body):
     translate(body)
-    enhance()
-    call_pipeline()
-    return check_pipeline()
+    enhance()        
+    
+    # call_pipeline()
+    # return check_pipeline()

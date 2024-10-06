@@ -1,5 +1,6 @@
 import os
 import re
+from pathlib import Path
 from groq import Groq
 from dotenv import load_dotenv
 
@@ -33,11 +34,24 @@ def extract_java_code(text):
     else:
         print("No valid Java code block found in the text.")
         return None
+    
+def extract_xml_code(text):
+    start = text.find("```xml") + len("```xml")
+    end = text.find("```", start)
+
+    if start != -1 and end != -1:
+        # Extract the Java code and remove leading/trailing whitespaces
+        code = text[start:end].strip()
+        return code
+    else:
+        print("No valid Java code block found in the text.")
+        return None
 
 def improve_code_with_groq(java_code):
     prompt = f"""
     Improve the following Java code, while maintaining the same functionality.
-    Focus on better code structure, formatting, and refactoring, ensuring readability and best practices.
+    Focus on better code structure, formatting, and refactoring, ensuring readability and best practices for object oriented programming.
+    Don't change the class name and remove unused variables.
 
     Here is the code:
     ```java
@@ -52,7 +66,8 @@ def improve_code_with_groq(java_code):
         chat_completion = client.chat.completions.create(
             messages=[
                 {"role": "system", "content": "You're an expert Java developer."},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": prompt},
+                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs, findsecbugs and junit"}
             ],
             model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
             temperature=0
@@ -60,20 +75,51 @@ def improve_code_with_groq(java_code):
 
         # Extract the response content
         response_text = chat_completion.choices[0].message.content.strip()
-
+        print(response_text)
         # Extract the Java code using the find() method
         improved_code = extract_java_code(response_text)
-        return improved_code, response_text  # Return both the code and the full response
+        pom = extract_xml_code(response_text)
+        
+        return improved_code, pom, response_text  # Return both the code and the full response
 
     except Exception as e:
         print(f"Error during code improvement: {e}")
         return None, None
-
-def write_improved_java_file(original_file_path, improved_code):
+    
+def write_pom_file(input_code, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
+        os.makedirs(output_folder + "/test")
+        os.makedirs(output_folder + "/src")
+    if is_test:
+        output_folder = "evolved/test"
+    else:
+        output_folder = "evolved"
+    
+    file_name = "pom.xml"
+    improved_file_path = os.path.join(output_folder, file_name)
+    
+    # Write the improved code to the new file
+    try:
+        with open(improved_file_path, 'w') as file:
+            file.write(input_code)
+        print(f"Pom file saved at: {improved_file_path}")
+    except Exception as e:
+        print(f"Error writing the file: {e}")
+
+def write_improved_java_file(original_file_path, improved_code, is_test):
+    # Create 'evolved' folder if it doesn't exist
+    output_folder = "evolved"
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+        os.makedirs(output_folder + "/test")
+        os.makedirs(output_folder + "/src")
+    if is_test:
+        output_folder = "evolved/test"
+    else:
+        output_folder = "evolved/src"
     
     # Extract file name from the original path and construct the new file path
     file_name = os.path.basename(original_file_path)
@@ -91,11 +137,17 @@ def remove_multiple_newlines(input_string: str) -> str:
     # Use regex to replace multiple newlines with a single newline
     return re.sub(r'\n+', '\n', input_string).strip()
 
-def write_improvement_summary(original_file_path, response_text):
+def write_improvement_summary(original_file_path, response_text, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
+        os.makedirs(output_folder + "/test")
+        os.makedirs(output_folder + "/src")
+    if is_test:
+        output_folder = "evolved/test"
+    else:
+        output_folder = "evolved/src"
     
     # Generate a summary file path based on the original file
     file_name = os.path.basename(original_file_path)
@@ -118,16 +170,22 @@ def improve_java_file(file_path):
         return
     
     # Step 2: Improve the Java code using Groq LLM
-    improved_code, response_text = improve_code_with_groq(java_code)
+    improved_code, pom, response_text = improve_code_with_groq(java_code)
     if improved_code is None:
         print("No valid improvements were generated.")
         return
     
+    is_test = "Test" in Path(file_path).stem
+
     # Step 3: Save the improved Java code to the 'evolved' folder
-    write_improved_java_file(file_path, improved_code)
+    write_improved_java_file(file_path, improved_code, is_test)
     
     # Step 4: Write the improvement summary to a separate text file
-    write_improvement_summary(file_path, response_text)
+    write_improvement_summary(file_path, response_text, is_test)
+
+    # Step 5: Write the pom
+    if not is_test:
+        write_pom_file(pom, is_test)
 
 # Function to get files based on extensions
 def get_source_files(folder_path, extensions):

@@ -1,0 +1,91 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3.9.9' // Nome che hai dato all'installazione Maven
+    }
+
+    environment {
+        PROJECT_PATH = '/var/jenkins_home/workspace/test'  // Specifica il path del progetto
+    }
+    stages {
+        stage('Build') {
+            steps {
+                dir("${PROJECT_PATH}") {
+                    sh 'mvn -B -DskipTests clean package'  // Esegui Maven dalla directory del progetto
+                }            }
+        }
+        stage('Test') { 
+            steps {
+                dir("${PROJECT_PATH}") {
+                    sh 'mvn test'  // Esegui i test
+                }            
+			}
+        }
+            /*    
+		stage('Test Results') {
+            steps {
+                junit '/var/jenkins_home/workspace/test/target/surefire-reports/*.xml'
+            }
+        }
+    
+        stage('Allure Report') {
+            steps {
+                allure([
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'build/allure-results']]
+                ])
+            }
+        }
+
+
+		stage('Performance Test') {
+            steps {
+
+                sh 'jmeter -n -t path/to/your/test.jmx -l path/to/your/results.jtl'
+            }
+        }
+
+        stage('Publish Performance Report') {
+            steps {
+                performance {
+                    sourceFiles 'path/to/your/results.jtl'
+                }
+            }
+        }
+		stage('Publish Security Report') {
+            steps {
+
+                archiveArtifacts artifacts: 'zap_report.html', allowEmptyArchive: true
+                publishHTML(target: [
+                    reportName: 'ZAP Security Report',
+                    reportDir: '',
+                    reportFiles: 'zap_report.html',
+                    keepAll: true
+                ])
+			
+            }
+        }
+
+		
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool name: 'SonarQube Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my-app -Dsonar.sources=src -Dsonar.host.url=http://your-sonarqube-server -Dsonar.login=your_token"
+                }
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                sh 'mvn spotbugs:check'
+            }
+        }
+        
+        stage('FindSecBugs Analysis') {
+            steps {
+                sh 'mvn findsecbugs:check'
+            }
+        }
+                	*/
+    }
+}

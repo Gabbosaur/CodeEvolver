@@ -34,7 +34,7 @@ def remove_except(source_dir, exclude_dir, exclude_file):
 
 def main():
     source_dir = 'evolved'
-    destination_dir = 'jenkins_home/jobs/test'
+    destination_dir = 'jenkins_home/workspace/test'
     
     exclude_dir = 'builds'     # The directory to exclude
     exclude_file = 'config.xml'     # The file to exclude

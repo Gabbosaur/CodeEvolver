@@ -23,16 +23,23 @@ def translate(body: Body):
     return {"Hello": "World"}
 
 @app.post("/enhance/")
-def enhance(body: Body):
-    enhancer("./legacyproject") 
+def enhance():
+    enhancer() 
     return {"Hello": "World"}
 
 @app.post("/call_pipeline/")
-def call_pipeline():
+def call_pipeline_endpoint():
     call_pipeline() 
     return {"Hello": "World"}
 
 @app.get("/check_pipeline/")
-def check_pipeline():
+def check_pipeline_endpoint():
     check_pipeline() 
     return {"Hello": "World"}
+
+@app.post("/evolve/")
+def evolve(body: Body):
+    translate(body)
+    enhance()
+    call_pipeline()
+    return check_pipeline()

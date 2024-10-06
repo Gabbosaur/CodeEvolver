@@ -17,7 +17,8 @@ if LLM_MODE == 'GROQ':
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Hardcoded folder path and target language
-FOLDER_PATH = './legacyproject/'  # <-- Set your folder path here
+FOLDER_PATH = './legacy_project/'  # <-- Set your folder path here
+TARGET_PATH = './translated/'
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
 
 # Function to get files based on extensions
@@ -128,7 +129,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))
 
     # Output folder for transformed/translated files
-    output_folder = os.path.join(folder_path, 'translated')
+    output_folder = os.path.join(TARGET_PATH)
 
     for file_path in source_files:
         print(f"Processing {file_path}")

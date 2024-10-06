@@ -1,10 +1,13 @@
 import os
+import re
 from groq import Groq
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
 LLM_MODE = os.getenv('LLM_MODE')
+FOLDER_PATH = './translated/'  # <-- Set your folder path here
 
 
 client = None
@@ -84,6 +87,10 @@ def write_improved_java_file(original_file_path, improved_code):
     except Exception as e:
         print(f"Error writing the improved file: {e}")
 
+def remove_multiple_newlines(input_string: str) -> str:
+    # Use regex to replace multiple newlines with a single newline
+    return re.sub(r'\n+', '\n', input_string).strip()
+
 def write_improvement_summary(original_file_path, response_text):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
@@ -92,13 +99,13 @@ def write_improvement_summary(original_file_path, response_text):
     
     # Generate a summary file path based on the original file
     file_name = os.path.basename(original_file_path)
-    summary_file_path = os.path.join(output_folder, f"{os.path.splitext(file_name)[0]}_improvement_summary.txt")
+    summary_file_path = os.path.join(output_folder, f"{os.path.splitext(file_name)[0]}_improvement_summary.md")
 
     # Write the summary of improvements
     try:
         with open(summary_file_path, 'w') as summary_file:
-            summary_file.write("The following improvements were made by Groq's LLM:\n\n")
-            summary_file.write(response_text)
+            summary_file.write("The following improvements were made by the LLM:\n")
+            summary_file.write(remove_multiple_newlines(response_text.split("```")[-1]))
         print(f"Improvement summary saved at: {summary_file_path}")
     except Exception as e:
         print(f"Error writing the improvement summary: {e}")
@@ -122,8 +129,19 @@ def improve_java_file(file_path):
     # Step 4: Write the improvement summary to a separate text file
     write_improvement_summary(file_path, response_text)
 
-def main(java_file_path = "/home/ubuntu/Projects/hackathon/CodeEvolver/translated/TrimethiusCipher.java" ):
-    improve_java_file(java_file_path)
+# Function to get files based on extensions
+def get_source_files(folder_path, extensions):
+    source_files = []
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(extensions):
+                source_files.append(os.path.join(root, file))
+    return source_files
+
+def main(folder_path=FOLDER_PATH):
+    source_files = get_source_files(folder_path, ('.java'))
+    for source_file in source_files:
+        improve_java_file(source_file)
 
 if __name__ == "__main__":
     main()

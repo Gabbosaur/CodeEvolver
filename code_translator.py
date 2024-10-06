@@ -4,6 +4,7 @@ from pathlib import Path
 from groq import Groq
 from dotenv import load_dotenv
 import re
+import shutil
 
 load_dotenv()
 
@@ -64,7 +65,7 @@ def extract_java_code(text):
         return None
 
 def translate_code_with_groq(source_code, source_language, file_path, target_language='Java'):
-    prompt = f"Translate the following {source_language} code to {target_language}, please generate only one java code block and don't propose multiple solutions and create junit tests and rename the class name with {Path(file_path).stem.capitalize()}:\n\n{source_code}"
+    prompt = f"Translate the following {source_language} code to {target_language}, then create a complete set of Junit tests on public methods with org.junit.Test (rename the class name with {Path(file_path).stem.capitalize()}):\n\n{source_code}"
     # Call Groq's API with the given prompt
     try:
         chat_completion = client.chat.completions.create(
@@ -72,12 +73,16 @@ def translate_code_with_groq(source_code, source_language, file_path, target_lan
                 {"role": "system", "content": "You're an expert Java developer."},
                 {"role": "user", "content": prompt}
             ],
-            model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
+            # model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
+            # model="llama3-8b-8192",
+            # model="llama-3.1-70b-versatile",
+            model="mixtral-8x7b-32768",
             temperature=0
         )
 
         # Extract the response content
         response_text = chat_completion.choices[0].message.content.strip()
+        print(response_text)
         # Extract the Java code using the find() method
         improved_code, test_suite = extract_java_code(response_text)
     
@@ -130,6 +135,11 @@ def write_transformed_code(output_folder, file_path, transformed_code, test_suit
 
 # Main function to process the folder, translate, and save the output
 def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
+
+    # Clean up the output folder
+    shutil.rmtree('translated', ignore_errors=True)
+    shutil.rmtree('evolved', ignore_errors=True)
+
     # Get all files that need to be processed (Python, COBOL, Java)
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))
 

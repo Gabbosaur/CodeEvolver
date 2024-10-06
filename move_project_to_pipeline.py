@@ -12,7 +12,6 @@ def copy_files_recursive(source_dir, destination_dir):
 
 
 def remove_except(source_dir, exclude_dir, exclude_file):
-    """Remove all files and directories in source_dir except for exclude_dir and exclude_file."""
     # Walk through the directory
     for root, dirs, files in os.walk(source_dir, topdown=False):
         # Remove files that are not the excluded file

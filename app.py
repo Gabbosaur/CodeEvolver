@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from code_translator import main as translater
 from code_enhancer import main as enhancer
+from move_project_to_pipeline import main as move_to_pipeline
 from call_pipeline import main as call_pipeline
 from check_pipeline import main as check_pipeline
 
@@ -41,7 +42,7 @@ def check_pipeline_endpoint():
 @app.post("/evolve/")
 def evolve(body: Body):
     translate(body)
-    enhance()        
-    
+    enhance()
+    move_to_pipeline()       
     # call_pipeline()
     # return check_pipeline()

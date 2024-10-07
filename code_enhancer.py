@@ -51,7 +51,8 @@ def improve_code_with_groq(java_code):
     prompt = f"""
     Improve the following Java code, while maintaining the same functionality.
     Focus on better code structure, formatting, and refactoring, ensuring readability and best practices for object oriented programming.
-    It is mandatory not to change the class name and not to remove methods for unit testing.
+    It is mandatory not to change the class name and not to remove methods for unit testing. 
+    Make sure to import all the necessary libraries.
 
     Here is the code:
     ```java

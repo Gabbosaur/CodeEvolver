@@ -51,7 +51,7 @@ def improve_code_with_groq(java_code):
     prompt = f"""
     Improve the following Java code, while maintaining the same functionality.
     Focus on better code structure, formatting, and refactoring, ensuring readability and best practices for object oriented programming.
-    Don't change the class name.
+    It is mandatory not to change the class name and not to remove methods for unit testing.
 
     Here is the code:
     ```java
@@ -67,7 +67,7 @@ def improve_code_with_groq(java_code):
             messages=[
                 {"role": "system", "content": "You're an expert Java developer."},
                 {"role": "user", "content": prompt},
-                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.4.2 and junit, with Source option 7 and target option 7."}
+                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.4.2 and junit, org.junit.jupiter and junit-jupiter-engine, with Source option 8 and target option 8."}
             ],
             # model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
             model="llama-3.1-70b-versatile",
@@ -76,7 +76,7 @@ def improve_code_with_groq(java_code):
 
         # Extract the response content
         response_text = chat_completion.choices[0].message.content.strip()
-        print(response_text)
+        # print(response_text)
         # Extract the Java code using the find() method
         improved_code = extract_java_code(response_text)
         pom = extract_xml_code(response_text)

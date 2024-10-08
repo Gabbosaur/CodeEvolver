@@ -2,6 +2,9 @@ import ollama  # Ensure the Ollama module is installed and running locally
 import os
 from groq import Groq
 import re
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
 
 LLM_MODE = os.getenv('LLM_MODE')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')

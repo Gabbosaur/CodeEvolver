@@ -2,15 +2,13 @@ import os
 import ollama 
 
 from groq import Groq
-from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names
+from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names, LLM_MODE, GROQ_API_KEY
 
 SOURCE_PATH = '.\\translated'
 TARGET_PATH = '.\\evolved'
 SOURCE_LANGUAGE = 'Java'
 OUTPUT_SOURCE_CODE = TARGET_PATH + '\\src\\main\\java\\'
 OUTPUT_TEST_CODE = TARGET_PATH +'\\src\\test\\java\\'
-LLM_MODE = os.getenv('LLM_MODE')
-GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 client = None
 if LLM_MODE == 'GROQ':

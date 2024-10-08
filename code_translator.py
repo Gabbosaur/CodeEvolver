@@ -4,13 +4,13 @@ import shutil
 from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language, LLM_MODE
 
 # Hardcoded folder path and target language
-FOLDER_PATH = '.\\legacy_project\\'  # <-- Set your folder path here
-TARGET_PATH = '.\\translated\\'
+FOLDER_PATH = 'legacy_project'  # <-- Set your folder path here
+TARGET_PATH = 'translated'
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
 
 # Function to write the translated code to a file
 def write_translated_code(transformed_code, response_text):
-    os.makedirs("translated", exist_ok=True)
+    os.makedirs(TARGET_PATH, exist_ok=True)
     file_name = get_class_names(transformed_code)[0] + ".java"
     output_path = TARGET_PATH + "\\" + file_name    
     

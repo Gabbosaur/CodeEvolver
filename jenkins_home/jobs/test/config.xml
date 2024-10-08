@@ -1,5 +1,14 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job@1436.vfa_244484591f">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2214.vb_b_34b_2ea_9b_83"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2214.vb_b_34b_2ea_9b_83">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
   <description></description>
   <keepDependencies>false</keepDependencies>
   <properties/>
@@ -27,13 +36,30 @@
                 }            
 			}
         }
-            /*    
-		stage(&apos;Test Results&apos;) {
+
+        stage(&apos;Generate Javadoc&apos;) {
             steps {
-                junit &apos;/var/jenkins_home/workspace/test/target/surefire-reports/*.xml&apos;
+                sh &apos;mvn javadoc:javadoc&apos;
             }
         }
-    
+
+        stage(&apos;Archive Javadoc&apos;) {
+            steps {
+                archiveArtifacts artifacts: &apos;target/reports/apidocs/**&apos;, allowEmptyArchive: true
+            }
+        }
+        stage(&apos;Archive source&apos;) {
+            steps {
+                archiveArtifacts artifacts: &apos;src/**&apos;, allowEmptyArchive: true
+            }
+        }
+        stage(&apos;Archive target&apos;) {
+            steps {
+                archiveArtifacts artifacts: &apos;target/**&apos;, allowEmptyArchive: true
+            }
+        }
+        
+                /*
         stage(&apos;Allure Report&apos;) {
             steps {
                 allure([

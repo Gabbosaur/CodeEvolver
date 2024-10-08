@@ -9,7 +9,7 @@ from call_pipeline import main as call_pipeline
 from check_pipeline import main as check_pipeline
 from fastapi.responses import FileResponse
 from fastapi import FastAPI, Response
-
+from time import sleep
 
 # Define a Pydantic model for the request body
 class Body(BaseModel):
@@ -48,10 +48,11 @@ def check_pipeline_endpoint():
 def evolve(body: Body):
     translate(body)
     enhance()
-    # move_to_pipeline()
-    # call_pipeline()
-    return "OK"
-    #return check_pipeline()
+    move_to_pipeline()       
+    call_pipeline()
+    #return "OK"
+    sleep(3)
+    return check_pipeline()
 
 @app.get("/download_folder")
 async def download_folder():

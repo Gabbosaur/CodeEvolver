@@ -4,6 +4,7 @@ from pathlib import Path
 from groq import Groq
 from dotenv import load_dotenv
 import ollama  # Ensure the Ollama module is installed and running locally
+from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names
 
 
 load_dotenv()
@@ -20,7 +21,7 @@ client = None
 if LLM_MODE == 'GROQ':
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-def read_java_file(file_path):
+def read_file(file_path):
     try:
         with open(file_path, 'r') as file:
             return file.read()
@@ -28,31 +29,7 @@ def read_java_file(file_path):
         print(f"File {file_path} not found!")
         return None
 
-def extract_java_code(text):
-    start = text.find("```java") + len("```java")
-    end = text.find("```", start)
-
-    if start != -1 and end != -1:
-        # Extract the Java code and remove leading/trailing whitespaces
-        java_code_extracted = text[start:end].strip()
-        return java_code_extracted
-    else:
-        print("No valid Java code block found in the text.")
-        return None
-    
-def extract_xml_code(text):
-    start = text.find("```xml") + len("```xml")
-    end = text.find("```", start)
-
-    if start != -1 and end != -1:
-        # Extract the Java code and remove leading/trailing whitespaces
-        code = text[start:end].strip()
-        return code
-    else:
-        print("No valid Java code block found in the text.")
-        return None
-
-def improve_code_with_groq(java_code):
+def enhance_code_with_llm(java_code):
     prompt = f"""
     Improve the following Java code, while maintaining the same functionality.
     Focus on better code structure, formatting, and refactoring, ensuring readability and best practices for object oriented programming.
@@ -66,7 +43,27 @@ def improve_code_with_groq(java_code):
 
     Give as output only the code and make a list describing the improvements made.
     """
+    if LLM_MODE == 'GROQ':
+        return enhance_code_with_groq(prompt)
+    else:
+        return enhance_ocde_with_ollama(prompt)
 
+def enhance_ocde_with_ollama(prompt):
+    # Call Ollama and pass the prompt
+    result = ollama.chat(model='codellama', messages=[
+        {
+            'role': 'user',
+            'content': prompt + "\n\n" + "Generate pom.xml for this project adding spotbugs version 4.4.2 and junit, org.junit.jupiter and junit-jupiter-engine, with Source option 8 and target option 8. Add the configuration maven-surefire-plugin <include>**/*Test.java</include> and spotbugs"
+        }
+    ])
+
+    # Extract the translated code from the output
+    response_text = result['message'].strip()  # Access 'message' field from Ollama's response
+    improved_code = extract_java_code(response_text)
+    pom = extract_xml_code(response_text)    
+    return improved_code, pom, response_text
+
+def enhance_code_with_groq(prompt):
     # Call Groq's API with the given prompt
     try:
         chat_completion = client.chat.completions.create(
@@ -111,7 +108,7 @@ def write_pom_file(input_code):
     except Exception as e:
         print(f"Error writing the file: {e}")
 
-def write_improved_java_file(original_file_path, improved_code):
+def write_enhanced_source_file(original_file_path, improved_code):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
@@ -132,31 +129,7 @@ def write_improved_java_file(original_file_path, improved_code):
     except Exception as e:
         print(f"Error writing the improved file: {e}")
 
-
-def remove_comments(java_code):
-    # Remove single-line comments (//...)
-    java_code = re.sub(r'//.*', '', java_code)
-    
-    # Remove multi-line comments (/* ... */)
-    java_code = re.sub(r'/\*.*?\*/', '', java_code, flags=re.DOTALL)
-    
-    return java_code
-
-def get_class_names(java_code):
-    # First, remove all comments from the code
-    java_code_no_comments = remove_comments(java_code)
-    # java_code_no_comments = java_code
-    # Regular expression to match class names (public, private, and static classes or interfaces)
-    class_pattern = r'\b(class|interface)\s+(\w+)'
-    
-    # Find all class names in the java_code
-    class_names = re.findall(class_pattern, java_code_no_comments)
-    
-    # Extract only the class names from the matches
-    return [match[1] for match in class_names]
-
-
-def write_java_test_file(generated_code):
+def write_enhanced_test_file(generated_code):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
@@ -176,9 +149,7 @@ def write_java_test_file(generated_code):
     except Exception as e:
         print(f"Error writing the improved file: {e}")
 
-
-
-def write_improvement_summary(original_file_path, response_text, is_test):
+def write_enhancement_summary(original_file_path, response_text, is_test):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
@@ -203,90 +174,26 @@ def write_improvement_summary(original_file_path, response_text, is_test):
     except Exception as e:
         print(f"Error writing the improvement summary: {e}")
 
-def improve_java_file(file_path):
-    """Main function that reads, improves, and writes the Java file."""
+def enhance_code(file_path):
     # Step 1: Read the original Java file
-    java_code = read_java_file(file_path)
+    java_code = read_file(file_path)
     if java_code is None:
         return
     
-    # Step 2: Improve the Java code using Groq LLM
-    improved_code, pom, response_text = improve_code_with_groq(java_code)
-    if improved_code is None:
+    # Step 2: enhance the Java code using LLM        
+    enhanced_code, pom, response_text = enhance_code_with_llm(java_code)
+    if enhanced_code is None:
         print("No valid improvements were generated.")
         return
     
     # Step 3: Save the improved Java code to the 'evolved' folder
-    write_improved_java_file(file_path, improved_code)
+    write_enhanced_source_file(file_path, enhanced_code)
     
     # Step 4: Write the improvement summary to a separate text file
-    write_improvement_summary(file_path, response_text, False)
+    write_enhancement_summary(file_path, response_text, False)
 
     # Step 5: Write the pom
     write_pom_file(pom)
-
-# Function to get files based on extensions
-def get_source_files(folder_path, extensions):
-    source_files = []
-    for root, dirs, files in os.walk(folder_path):
-        for file in files:
-            if file.endswith(extensions):
-                source_files.append(os.path.join(root, file))
-    return source_files
-
-def extract_java_code(text):
-    start = text.find("```java") + len("```java")
-    end = text.find("```", start)
-
-    if start != -1 and end != -1:
-        # Extract the Java code and remove leading/trailing whitespaces
-        java_code_extracted = text[start:end].strip()
-        # java_test_extracted = new_text[start_test:end_test].strip()
-        return java_code_extracted#, java_test_extracted
-    else:
-        print("No valid Java code block found in the text.")
-        return None
-
-# Function to interact with the local Ollama model for code translation
-def ask_to_ollama(prompt):
-    # Call Ollama and pass the prompt
-    result = ollama.chat(model='codellama', messages=[
-        {
-            'role': 'user',
-            'content': prompt,
-        }
-    ])
-
-    # Extract the translated code from the output
-    response_text = result['message'].strip()  # Access 'message' field from Ollama's response
-    translated_code = extract_java_code(response_text)
-    return translated_code, response_text
-
-def ask_to_groq(system_prompt, prompt):
-    # Call Groq's API with the given prompt
-    try:
-        print(system_prompt)
-        chat_completion = client.chat.completions.create(
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
-                ],
-                #model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
-                # model="llama3-8b-8192",
-                model="llama-3.1-70b-versatile",
-                #model="mixtral-8x7b-32768",
-                temperature=0
-            )
-        # Extract the response content
-        response_text = chat_completion.choices[0].message.content.strip()
-        print(response_text)
-
-        translated_code = extract_java_code(response_text)
-        return translated_code, response_text  # Return both the code and the full response
-    except Exception as e:
-        print(f"Error during code translation: {e}")
-        return None, None
-
 
 def generate_unit_tests(source_code):
     system_prompt = f"You will act as a software tester specializing in JUnit. I will provide you with a specific test scenario, and you need to generate a corresponding test suite using JUnit. The test suite should follow these guidelines: only test public methods, only access public variables and exclude testing internal private classes."
@@ -302,7 +209,7 @@ def generate_unit_tests(source_code):
 def main():
     source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:
-        improve_java_file(source_file)
+        enhance_code(source_file)
 
     # Get all enhanced files that need tests
     source_files = get_source_files(OUTPUT_SOURCE_CODE, ('.java'))
@@ -316,9 +223,9 @@ def main():
 
         generated_code, response_text = generate_unit_tests(source_code)
 
-        write_improvement_summary(file_path, response_text, True)
+        write_enhancement_summary(file_path, response_text, True)
         # Write the transformed code to the output folder
-        write_java_test_file(generated_code)
+        write_enhanced_test_file(generated_code)
 
 if __name__ == "__main__":
     main()

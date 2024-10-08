@@ -50,7 +50,8 @@ def evolve(body: Body):
     enhance()
     # move_to_pipeline()       
     # call_pipeline()
-    return check_pipeline()
+    return "OK"
+    #return check_pipeline()
 
 @app.get("/download_folder")
 async def download_folder():

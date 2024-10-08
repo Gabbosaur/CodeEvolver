@@ -10,26 +10,42 @@
 
 ## Installation Requirements
 
-Ensure you have Docker installed on your system to run the application.
+Ensure you are in Linux environment and you have Docker installed on your system to run the application.
+1. Clone this repository:
+  ```bash
+   git clone https://github.com/Gabbosaur/CodeEvolver.git
+  ```
+2. Enter the project and configure the environment:
+  ```bash
+   cd CodeEvolver
+   python -m venv venv
+   source venv/bin/activate
+  ```
 
-## How to Run
+## Deploy
 
 To start **CodeEvolver**, use the following commands:
 
 1. Run the Jenkins Docker container:
   ```bash
-   docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --restart=on-failure izanagi95/jenkins_rebirth:latest
+   docker run -p 8080:8080 -p 50000:50000 -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/jenkins_home/workspace:/var/jenkins_home/workspace -v $(pwd)/jenkins_home/users:/var/jenkins_home/users -v $(pwd)/jenkins_home/jobs:/var/jenkins_home/jobs --restart=on-failure jenkins/jenkins:lts-jdk17
   ```
 2. Start the FastAPI application:
   ```bash
-   uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+   nohup uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
   ```
-
+3. Start CodeEvolver UI:
+  ```bash
+   nohup streamlit run ui.py &
+  ```
+3. Go to CodeEvolver UI via browser http://localhost:8501
 
 ## Accessing Services
+- **CodeEvolver UI**: http://localhost:8501
 - **API Service**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
 - **Jenkins Platform**: http://localhost:8080
+
 
 <!-- 
 ## Contributing

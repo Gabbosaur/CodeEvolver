@@ -1,11 +1,7 @@
 import os
-from dotenv import load_dotenv
 import shutil
-from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language
 
-load_dotenv()
-
-LLM_MODE = os.getenv('LLM_MODE')
+from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language, LLM_MODE
 
 # Hardcoded folder path and target language
 FOLDER_PATH = './legacy_project/'  # <-- Set your folder path here

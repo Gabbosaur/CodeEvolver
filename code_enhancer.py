@@ -1,25 +1,18 @@
 import os
-import re
-from pathlib import Path
+import ollama 
+
 from groq import Groq
-from dotenv import load_dotenv
-import ollama  # Ensure the Ollama module is installed and running locally
-from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names
+from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names, LLM_MODE, GROQ_API_KEY
 
-
-load_dotenv()
-
-LLM_MODE = os.getenv('LLM_MODE')
 SOURCE_PATH = './translated/'
-TARGET_PATH = './evolved/'
+TARGET_PATH = './evolved'
 SOURCE_LANGUAGE = 'Java'
-OUTPUT_SOURCE_CODE = './evolved/src/main/java/'
-OUTPUT_TEST_CODE = './evolved/src/test/java/'
-
+OUTPUT_SOURCE_CODE = TARGET_PATH + '/src/main/java/'
+OUTPUT_TEST_CODE = TARGET_PATH +'/src/test/java/'
 
 client = None
 if LLM_MODE == 'GROQ':
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    client = Groq(api_key=GROQ_API_KEY)
 
 def read_file(file_path):
     try:
@@ -91,14 +84,8 @@ def enhance_code_with_groq(prompt):
         return None, None
     
 def write_pom_file(input_code):
-    # Create 'evolved' folder if it doesn't exist
-    output_folder = "evolved"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "/src/test/java")
-        os.makedirs(output_folder + "/src/main/java")
-    
     file_name = "pom.xml"
-    improved_file_path = os.path.join(output_folder, file_name)
+    improved_file_path = os.path.join(TARGET_PATH, file_name)
     
     # Write the improved code to the new file
     try:
@@ -109,17 +96,9 @@ def write_pom_file(input_code):
         print(f"Error writing the file: {e}")
 
 def write_enhanced_source_file(original_file_path, improved_code):
-    # Create 'evolved' folder if it doesn't exist
-    output_folder = "evolved"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "/src/test/java")
-        os.makedirs(output_folder + "/src/main/java")
-
-    output_folder = "evolved/src/main/java"
-    
     # Extract file name from the original path and construct the new file path
     file_name = os.path.basename(original_file_path)
-    improved_file_path = os.path.join(output_folder, file_name)
+    improved_file_path = os.path.join(OUTPUT_SOURCE_CODE, file_name)
     
     # Write the improved code to the new file
     try:
@@ -130,18 +109,10 @@ def write_enhanced_source_file(original_file_path, improved_code):
         print(f"Error writing the improved file: {e}")
 
 def write_enhanced_test_file(generated_code):
-    # Create 'evolved' folder if it doesn't exist
-    output_folder = "evolved"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "/src/test/java")
-        os.makedirs(output_folder + "/src/main/java")
-    output_folder = "evolved/src/test/java"    
     # Extract file name from the original path and construct the new file path
-    print(generated_code)
     file_name = get_class_names(generated_code)[0] +".java"
-    output_file_path = os.path.join(output_folder, file_name)
+    output_file_path = os.path.join(OUTPUT_TEST_CODE, file_name)
     
-    # Write the improved code to the new file
     try:
         with open(output_file_path, 'w') as file:
             file.write(generated_code)
@@ -150,16 +121,7 @@ def write_enhanced_test_file(generated_code):
         print(f"Error writing the improved file: {e}")
 
 def write_enhancement_summary(original_file_path, response_text, is_test):
-    # Create 'evolved' folder if it doesn't exist
-    output_folder = "evolved"
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "/src/test/java")
-        os.makedirs(output_folder + "/src/main/java")
-    if is_test:
-        output_folder = "evolved/src/test/java"
-    else:
-        output_folder = "evolved/src/main/java"
-    
+    output_folder = OUTPUT_TEST_CODE if is_test else OUTPUT_SOURCE_CODE    
     # Generate a summary file path based on the original file
     file_name = os.path.basename(original_file_path)
     summary_file_path = os.path.join(output_folder, f"{os.path.splitext(file_name)[0]}_improvement_summary.md")
@@ -169,7 +131,6 @@ def write_enhancement_summary(original_file_path, response_text, is_test):
         with open(summary_file_path, 'w') as summary_file:
             summary_file.write("The following improvements were made by the LLM:\n")
             summary_file.write(response_text)
-            # summary_file.write(remove_multiple_newlines(response_text.split("```")[-1]))
         print(f"Improvement summary saved at: {summary_file_path}")
     except Exception as e:
         print(f"Error writing the improvement summary: {e}")
@@ -207,6 +168,12 @@ def generate_unit_tests(source_code):
         return ask_to_ollama(system_prompt + prompt)
 
 def main():
+    # setup
+    output_folder = TARGET_PATH
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder + "/src/test/java")
+        os.makedirs(output_folder + "/src/main/java")
+
     source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:
         enhance_code(source_file)

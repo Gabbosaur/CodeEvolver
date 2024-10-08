@@ -4,11 +4,11 @@ from groq import Groq
 import re
 
 LLM_MODE = os.getenv('LLM_MODE')
-
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 client = None
 if LLM_MODE == 'GROQ':
-    client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+    client = Groq(api_key=GROQ_API_KEY)
 
 # Function to determine the language of the source file based on its extension
 def detect_language(file_path):

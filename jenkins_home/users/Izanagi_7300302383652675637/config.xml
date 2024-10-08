@@ -1,7 +1,7 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <user>
   <version>10</version>
-  <id>Izanagi</id>
+  <id>izanagi</id>
   <fullName>Izanagi</fullName>
   <properties>
     <jenkins.console.ConsoleUrlProviderUserProperty/>
@@ -47,8 +47,24 @@
     </hudson.tasks.Mailer_-UserProperty>
     <jenkins.security.ApiTokenProperty>
       <tokenStore>
-        <tokenList/>
+        <tokenList>
+          <jenkins.security.apitoken.ApiTokenStore_-HashedToken>
+            <uuid>727a4f06-d17c-4034-8645-5682709eb3b8</uuid>
+            <name>Token created on 2024-10-08T22:06:41.679571476Z</name>
+            <creationDate>2024-10-08 22:06:41.683 UTC</creationDate>
+            <value>
+              <version>11</version>
+              <hash>c4a710a76ec49542efee9a02a629007f9d81a23f8b941c9feebad79b245f9d10</hash>
+            </value>
+          </jenkins.security.apitoken.ApiTokenStore_-HashedToken>
+        </tokenList>
       </tokenStore>
     </jenkins.security.ApiTokenProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1728416456156</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
   </properties>
 </user>

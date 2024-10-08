@@ -21,13 +21,30 @@ pipeline {
                 }            
 			}
         }
-            /*    
-		stage('Test Results') {
+
+        stage('Generate Javadoc') {
             steps {
-                junit '/var/jenkins_home/workspace/test/target/surefire-reports/*.xml'
+                sh 'mvn javadoc:javadoc'
             }
         }
-    
+
+        stage('Archive Javadoc') {
+            steps {
+                archiveArtifacts artifacts: 'target/reports/apidocs/**', allowEmptyArchive: true
+            }
+        }
+        stage('Archive source') {
+            steps {
+                archiveArtifacts artifacts: 'src/**', allowEmptyArchive: true
+            }
+        }
+        stage('Archive target') {
+            steps {
+                archiveArtifacts artifacts: 'target/**', allowEmptyArchive: true
+            }
+        }
+        
+                /*
         stage('Allure Report') {
             steps {
                 allure([

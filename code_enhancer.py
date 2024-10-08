@@ -7,8 +7,8 @@ from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_cod
 SOURCE_PATH = 'translated'
 TARGET_PATH = 'evolved'
 SOURCE_LANGUAGE = 'Java'
-OUTPUT_SOURCE_CODE = TARGET_PATH + '\\src\\main\\java\\'
-OUTPUT_TEST_CODE = TARGET_PATH +'\\src\\test\\java\\'
+OUTPUT_SOURCE_CODE = os.path.join(TARGET_PATH, 'src\\main\\java\\')
+OUTPUT_TEST_CODE = os.path.join(TARGET_PATH, 'src\\test\\java\\')
 
 client = None
 if LLM_MODE == 'GROQ':

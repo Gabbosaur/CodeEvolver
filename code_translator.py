@@ -12,7 +12,7 @@ TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Ja
 def write_translated_code(transformed_code, response_text):
     os.makedirs(TARGET_PATH, exist_ok=True)
     file_name = get_class_names(transformed_code)[0] + ".java"
-    output_path = TARGET_PATH + "\\" + file_name    
+    output_path = os.path.join(TARGET_PATH, file_name)  
     
     with open(output_path, 'w') as f:
         f.write(transformed_code)
@@ -20,6 +20,7 @@ def write_translated_code(transformed_code, response_text):
     print(f"Translated code written to {output_path}")
 
 def translate_code(source_code, source_language, target_language):
+    
     system_prompt = f"I want you to act as a code translator. I will provide you with code in a specific source language, and I want you to translate it into a different target language. The translation should maintain the same functionalities as the original code, but using an object-oriented approach. Additionally, you should include plenty of comments to enhance readability. After that remember to add public methods for future unit testing.\n\n"
     prompt = f"Translate the following from {source_language} to {target_language}:\n\n{source_code}"
 

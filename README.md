@@ -21,6 +21,10 @@ Ensure you are in Linux environment and you have Docker installed on your system
    python -m venv venv
    source venv/bin/activate
   ```
+3. Install tkinter:
+  ```bash
+   sudo apt-get install python3-tk
+  ```
 
 ## Deploy
 
@@ -28,7 +32,7 @@ To start **CodeEvolver**, use the following commands:
 
 1. Run the Jenkins Docker container:
   ```bash
-   docker run -p 8080:8080 -p 50000:50000 -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/jenkins_home/workspace:/var/jenkins_home/workspace -v $(pwd)/jenkins_home/users:/var/jenkins_home/users -v $(pwd)/jenkins_home/jobs:/var/jenkins_home/jobs --restart=on-failure jenkins/jenkins:lts-jdk17
+   sudo docker run -p 8080:8080 -p 50000:50000 -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/jenkins_home/workspace:/var/jenkins_home/workspace -v $(pwd)/jenkins_home/users:/var/jenkins_home/users -v $(pwd)/jenkins_home/jobs:/var/jenkins_home/jobs --restart=on-failure jenkins/jenkins:lts-jdk17
   ```
 2. Start the FastAPI application:
   ```bash

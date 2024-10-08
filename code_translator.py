@@ -25,6 +25,8 @@ def translate_code(source_code, source_language, target_language):
     system_prompt = f"I want you to act as a code translator. I will provide you with code in a specific source language, and I want you to translate it into a different target language. The translation should maintain the same functionalities as the original code, but using an object-oriented approach. Additionally, you should include plenty of comments to enhance readability. After that remember to add public methods for future unit testing.\n\n"
     prompt = f"Translate the following from {source_language} to {target_language}:\n\n{source_code}"
 
+
+    print("LLM_MODE: " + LLM_MODE)
     if LLM_MODE == 'GROQ':
         print(f"Using Groq")
         # Translate the code using Groq 

@@ -9,10 +9,10 @@ TARGET_PATH = '.\\translated\\'
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
 
 # Function to write the translated code to a file
-def write_translated_code(output_folder, transformed_code, response_text):
-    os.makedirs(output_folder, exist_ok=True)
+def write_translated_code(transformed_code, response_text):
+    os.makedirs(TARGET_PATH, exist_ok=True)
     file_name = get_class_names(transformed_code)[0] + ".java"
-    output_path = os.path.join(output_folder, file_name)        
+    output_path = TARGET_PATH + "\\" + file_name    
     
     with open(output_path, 'w') as f:
         f.write(transformed_code)
@@ -43,7 +43,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))
 
     # Output folder for transformed/translated files
-    output_folder = os.path.join(TARGET_PATH)
+    # output_folder = os.path.join()
 
     for file_path in source_files:
         print(f"Processing {file_path}")
@@ -61,7 +61,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
         translated_code, response_text = translate_code(source_code, source_language, target_language)
  
         # Write the transformed code to the output folder
-        write_translated_code(output_folder, translated_code, response_text)
+        write_translated_code(translated_code, response_text)
 
 if __name__ == '__main__':
     main(FOLDER_PATH, TARGET_LANGUAGE)

@@ -1,12 +1,14 @@
 import os
 import shutil
 
-from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language, LLM_MODE
+from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language
 
 # Hardcoded folder path and target language
 FOLDER_PATH = '.\\legacy_project\\'  # <-- Set your folder path here
 TARGET_PATH = '.\\translated\\'
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
+LLM_MODE = os.getenv('LLM_MODE')
+GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 # Function to write the translated code to a file
 def write_translated_code(output_folder, transformed_code, response_text):
@@ -56,6 +58,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
         with open(file_path, 'r') as f:
             source_code = f.read()
         
+        print(f"Processing")
         translated_code, response_text = translate_code(source_code, source_language, target_language)
  
         # Write the transformed code to the output folder

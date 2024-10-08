@@ -2,6 +2,7 @@
 /myenv/
 /evolved/
 /translated/
+/legacy_project/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

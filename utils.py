@@ -1,5 +1,6 @@
 import ollama  # Ensure the Ollama module is installed and running locally
 import os
+import shutil
 from groq import Groq
 import re
 
@@ -91,7 +92,7 @@ def ask_to_ollama(prompt):
 def ask_to_groq(system_prompt, prompt):
     # Call Groq's API with the given prompt
     try:
-        print(system_prompt)
+        # print(system_prompt)
         chat_completion = client.chat.completions.create(
                 messages=[
                     {"role": "system", "content": system_prompt},
@@ -105,10 +106,15 @@ def ask_to_groq(system_prompt, prompt):
             )
         # Extract the response content
         response_text = chat_completion.choices[0].message.content.strip()
-        print(response_text)
+        # print(response_text)
 
         translated_code = extract_java_code(response_text)
         return translated_code, response_text  # Return both the code and the full response
     except Exception as e:
         print(f"Error during code translation: {e}")
         return None, None
+
+
+def clean_env():
+    shutil.rmtree('translated', ignore_errors=True)
+    shutil.rmtree('evolved', ignore_errors=True)

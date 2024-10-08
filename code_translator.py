@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language, LLM_MODE
+from utils import ask_to_ollama, ask_to_groq, clean_env, get_class_names, get_source_files, detect_language, LLM_MODE
 
 # Hardcoded folder path and target language
 FOLDER_PATH = './legacy_project/'  # <-- Set your folder path here
@@ -17,7 +17,7 @@ def write_translated_code(output_folder, transformed_code, response_text):
     with open(output_path, 'w') as f:
         f.write(transformed_code)
 
-    print(f"Translated code written to {output_path}")
+    print(f"Translated code written to {output_path}\n")
 
 def translate_code(source_code, source_language, target_language):
     system_prompt = f"I want you to act as a code translator. I will provide you with code in a specific source language, and I want you to translate it into a different target language. The translation should maintain the same functionalities as the original code, but using an object-oriented approach. Additionally, you should include plenty of comments to enhance readability. After that remember to add public methods for future unit testing.\n\n"
@@ -34,8 +34,7 @@ def translate_code(source_code, source_language, target_language):
 def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
 
     # Clean up the output folder
-    shutil.rmtree('translated', ignore_errors=True)
-    shutil.rmtree('evolved', ignore_errors=True)
+    clean_env()
 
     # Get all files that need to be processed (Python, COBOL, Java)
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))
@@ -44,7 +43,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
     output_folder = os.path.join(TARGET_PATH)
 
     for file_path in source_files:
-        print(f"Processing {file_path}")
+        print(f"🔄 Translating {file_path}")
         
         # Detect the language of the file
         source_language = detect_language(file_path)

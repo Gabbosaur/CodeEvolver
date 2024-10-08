@@ -2,7 +2,7 @@ import os
 import ollama 
 
 from groq import Groq
-from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names, LLM_MODE, GROQ_API_KEY
+from utils import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names, LLM_MODE, GROQ_API_KEY
 
 SOURCE_PATH = './translated/'
 TARGET_PATH = './evolved'
@@ -91,7 +91,7 @@ def write_pom_file(input_code):
     try:
         with open(improved_file_path, 'w') as file:
             file.write(input_code)
-        print(f"Pom file saved at: {improved_file_path}")
+        print(f"Pom file saved at: {improved_file_path}\n")
     except Exception as e:
         print(f"Error writing the file: {e}")
 
@@ -99,7 +99,6 @@ def write_enhanced_source_file(original_file_path, improved_code):
     # Extract file name from the original path and construct the new file path
     file_name = os.path.basename(original_file_path)
     improved_file_path = os.path.join(OUTPUT_SOURCE_CODE, file_name)
-    
     # Write the improved code to the new file
     try:
         with open(improved_file_path, 'w') as file:
@@ -116,7 +115,7 @@ def write_enhanced_test_file(generated_code):
     try:
         with open(output_file_path, 'w') as file:
             file.write(generated_code)
-        print(f"Improved Java file saved at: {output_file_path}")
+        print(f"Improved Java file saved at: {output_file_path}\n")
     except Exception as e:
         print(f"Error writing the improved file: {e}")
 
@@ -140,16 +139,16 @@ def enhance_code(file_path):
     java_code = read_file(file_path)
     if java_code is None:
         return
-    
-    # Step 2: enhance the Java code using LLM        
+
+    # Step 2: enhance the Java code using LLM      
     enhanced_code, pom, response_text = enhance_code_with_llm(java_code)
     if enhanced_code is None:
         print("No valid improvements were generated.")
         return
-    
+
     # Step 3: Save the improved Java code to the 'evolved' folder
     write_enhanced_source_file(file_path, enhanced_code)
-    
+
     # Step 4: Write the improvement summary to a separate text file
     write_enhancement_summary(file_path, response_text, False)
 
@@ -176,13 +175,14 @@ def main():
 
     source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:
+        print("✨ Enhancing ", source_file)
         enhance_code(source_file)
 
     # Get all enhanced files that need tests
     source_files = get_source_files(OUTPUT_SOURCE_CODE, ('.java'))
 
     for file_path in source_files:
-        print(f"Processing {file_path}")
+        print(f"🧪 Generating tests for {file_path}")
 
         # Read the source code
         with open(file_path, 'r') as f:

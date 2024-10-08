@@ -41,14 +41,14 @@ def call_pipeline_endpoint():
 
 @app.get("/check_pipeline/")
 def check_pipeline_endpoint():
-    check_pipeline() 
+    check_pipeline()
     return {"Hello": "World"}
 
 @app.post("/evolve/")
 def evolve(body: Body):
     translate(body)
     enhance()
-    # move_to_pipeline()       
+    # move_to_pipeline()
     # call_pipeline()
     return "OK"
     #return check_pipeline()

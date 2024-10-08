@@ -169,10 +169,10 @@ def generate_unit_tests(source_code):
 
 def main():
     # setup
-    output_folder = TARGET_PATH
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "\\src\\test\\java")
-        os.makedirs(output_folder + "\\src\\main\\java")
+    if not os.path.exists(OUTPUT_SOURCE_CODE):
+        os.makedirs(OUTPUT_SOURCE_CODE)
+    if not os.path.exists(OUTPUT_TEST_CODE):
+        os.makedirs(OUTPUT_TEST_CODE)
 
     source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:

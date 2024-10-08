@@ -3,12 +3,17 @@ import re
 from pathlib import Path
 from groq import Groq
 from dotenv import load_dotenv
+import ollama  # Ensure the Ollama module is installed and running locally
 
 
 load_dotenv()
 
 LLM_MODE = os.getenv('LLM_MODE')
-FOLDER_PATH = './translated/'  # <-- Set your folder path here
+SOURCE_PATH = './translated/'
+TARGET_PATH = './evolved/'
+SOURCE_LANGUAGE = 'Java'
+OUTPUT_SOURCE_CODE = './evolved/src/main/java/'
+OUTPUT_TEST_CODE = './evolved/src/test/java/'
 
 
 client = None
@@ -68,7 +73,7 @@ def improve_code_with_groq(java_code):
             messages=[
                 {"role": "system", "content": "You're an expert Java developer."},
                 {"role": "user", "content": prompt},
-                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.4.2 and junit, org.junit.jupiter and junit-jupiter-engine, with Source option 8 and target option 8."}
+                {"role": "user", "content": "Generate pom.xml for this project adding spotbugs version 4.4.2 and junit, org.junit.jupiter and junit-jupiter-engine, with Source option 8 and target option 8. Add the configuration maven-surefire-plugin <include>**/*Test.java</include> and spotbugs"}
             ],
             # model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
             model="llama-3.1-70b-versatile",
@@ -88,7 +93,7 @@ def improve_code_with_groq(java_code):
         print(f"Error during code improvement: {e}")
         return None, None
     
-def write_pom_file(input_code, is_test):
+def write_pom_file(input_code):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
@@ -106,16 +111,14 @@ def write_pom_file(input_code, is_test):
     except Exception as e:
         print(f"Error writing the file: {e}")
 
-def write_improved_java_file(original_file_path, improved_code, is_test):
+def write_improved_java_file(original_file_path, improved_code):
     # Create 'evolved' folder if it doesn't exist
     output_folder = "evolved"
     if not os.path.exists(output_folder):
         os.makedirs(output_folder + "/src/test/java")
         os.makedirs(output_folder + "/src/main/java")
-    if is_test:
-        output_folder = "evolved/src/test/java"
-    else:
-        output_folder = "evolved/src/main/java"
+
+    output_folder = "evolved/src/main/java"
     
     # Extract file name from the original path and construct the new file path
     file_name = os.path.basename(original_file_path)
@@ -129,9 +132,51 @@ def write_improved_java_file(original_file_path, improved_code, is_test):
     except Exception as e:
         print(f"Error writing the improved file: {e}")
 
-def remove_multiple_newlines(input_string: str) -> str:
-    # Use regex to replace multiple newlines with a single newline
-    return re.sub(r'\n+', '\n', input_string).strip()
+
+def remove_comments(java_code):
+    # Remove single-line comments (//...)
+    java_code = re.sub(r'//.*', '', java_code)
+    
+    # Remove multi-line comments (/* ... */)
+    java_code = re.sub(r'/\*.*?\*/', '', java_code, flags=re.DOTALL)
+    
+    return java_code
+
+def get_class_names(java_code):
+    # First, remove all comments from the code
+    java_code_no_comments = remove_comments(java_code)
+    # java_code_no_comments = java_code
+    # Regular expression to match class names (public, private, and static classes or interfaces)
+    class_pattern = r'\b(class|interface)\s+(\w+)'
+    
+    # Find all class names in the java_code
+    class_names = re.findall(class_pattern, java_code_no_comments)
+    
+    # Extract only the class names from the matches
+    return [match[1] for match in class_names]
+
+
+def write_java_test_file(generated_code):
+    # Create 'evolved' folder if it doesn't exist
+    output_folder = "evolved"
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder + "/src/test/java")
+        os.makedirs(output_folder + "/src/main/java")
+    output_folder = "evolved/src/test/java"    
+    # Extract file name from the original path and construct the new file path
+    print(generated_code)
+    file_name = get_class_names(generated_code)[0] +".java"
+    output_file_path = os.path.join(output_folder, file_name)
+    
+    # Write the improved code to the new file
+    try:
+        with open(output_file_path, 'w') as file:
+            file.write(generated_code)
+        print(f"Improved Java file saved at: {output_file_path}")
+    except Exception as e:
+        print(f"Error writing the improved file: {e}")
+
+
 
 def write_improvement_summary(original_file_path, response_text, is_test):
     # Create 'evolved' folder if it doesn't exist
@@ -171,17 +216,14 @@ def improve_java_file(file_path):
         print("No valid improvements were generated.")
         return
     
-    is_test = "Test" in Path(file_path).stem
-
     # Step 3: Save the improved Java code to the 'evolved' folder
-    write_improved_java_file(file_path, improved_code, is_test)
+    write_improved_java_file(file_path, improved_code)
     
     # Step 4: Write the improvement summary to a separate text file
-    write_improvement_summary(file_path, response_text, is_test)
+    write_improvement_summary(file_path, response_text, False)
 
     # Step 5: Write the pom
-    if not is_test:
-        write_pom_file(pom, is_test)
+    write_pom_file(pom)
 
 # Function to get files based on extensions
 def get_source_files(folder_path, extensions):
@@ -192,10 +234,91 @@ def get_source_files(folder_path, extensions):
                 source_files.append(os.path.join(root, file))
     return source_files
 
-def main(folder_path=FOLDER_PATH):
-    source_files = get_source_files(folder_path, ('.java'))
+def extract_java_code(text):
+    start = text.find("```java") + len("```java")
+    end = text.find("```", start)
+
+    if start != -1 and end != -1:
+        # Extract the Java code and remove leading/trailing whitespaces
+        java_code_extracted = text[start:end].strip()
+        # java_test_extracted = new_text[start_test:end_test].strip()
+        return java_code_extracted#, java_test_extracted
+    else:
+        print("No valid Java code block found in the text.")
+        return None
+
+# Function to interact with the local Ollama model for code translation
+def ask_to_ollama(prompt):
+    # Call Ollama and pass the prompt
+    result = ollama.chat(model='codellama', messages=[
+        {
+            'role': 'user',
+            'content': prompt,
+        }
+    ])
+
+    # Extract the translated code from the output
+    response_text = result['message'].strip()  # Access 'message' field from Ollama's response
+    translated_code = extract_java_code(response_text)
+    return translated_code, response_text
+
+def ask_to_groq(system_prompt, prompt):
+    # Call Groq's API with the given prompt
+    try:
+        print(system_prompt)
+        chat_completion = client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                #model="llama-3.1-8b-instant",  # Ensure you use the appropriate Groq model
+                # model="llama3-8b-8192",
+                model="llama-3.1-70b-versatile",
+                #model="mixtral-8x7b-32768",
+                temperature=0
+            )
+        # Extract the response content
+        response_text = chat_completion.choices[0].message.content.strip()
+        print(response_text)
+
+        translated_code = extract_java_code(response_text)
+        return translated_code, response_text  # Return both the code and the full response
+    except Exception as e:
+        print(f"Error during code translation: {e}")
+        return None, None
+
+
+def generate_unit_tests(source_code):
+    system_prompt = f"You will act as a software tester specializing in JUnit. I will provide you with a specific test scenario, and you need to generate a corresponding test suite using JUnit. The test suite should follow these guidelines: only test public methods, only access public variables and exclude testing internal private classes."
+    prompt = f"Generate 5 test suite in Junit for the following class:\n\n{source_code}\n\n Don't generate test that requires user input and don't access to private methods or fields. "
+
+    if LLM_MODE == 'GROQ':
+        # Translate the code using Groq 
+        return ask_to_groq(system_prompt, prompt)
+    else:
+        # Translate the code using Ollama
+        return ask_to_ollama(system_prompt + prompt)
+
+def main():
+    source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:
         improve_java_file(source_file)
+
+    # Get all enhanced files that need tests
+    source_files = get_source_files(OUTPUT_SOURCE_CODE, ('.java'))
+
+    for file_path in source_files:
+        print(f"Processing {file_path}")
+
+        # Read the source code
+        with open(file_path, 'r') as f:
+            source_code = f.read()
+
+        generated_code, response_text = generate_unit_tests(source_code)
+
+        write_improvement_summary(file_path, response_text, True)
+        # Write the transformed code to the output folder
+        write_java_test_file(generated_code)
 
 if __name__ == "__main__":
     main()

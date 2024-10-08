@@ -4,11 +4,11 @@ import ollama
 from groq import Groq
 from utlls import ask_to_ollama, ask_to_groq, extract_java_code, extract_xml_code, get_source_files, get_class_names, LLM_MODE, GROQ_API_KEY
 
-SOURCE_PATH = './translated/'
-TARGET_PATH = './evolved'
+SOURCE_PATH = '.\\translated'
+TARGET_PATH = '.\\evolved'
 SOURCE_LANGUAGE = 'Java'
-OUTPUT_SOURCE_CODE = TARGET_PATH + '/src/main/java/'
-OUTPUT_TEST_CODE = TARGET_PATH +'/src/test/java/'
+OUTPUT_SOURCE_CODE = TARGET_PATH + '\\src\\main\\java\\'
+OUTPUT_TEST_CODE = TARGET_PATH +'\\src\\test\\java\\'
 
 client = None
 if LLM_MODE == 'GROQ':
@@ -171,8 +171,8 @@ def main():
     # setup
     output_folder = TARGET_PATH
     if not os.path.exists(output_folder):
-        os.makedirs(output_folder + "/src/test/java")
-        os.makedirs(output_folder + "/src/main/java")
+        os.makedirs(output_folder + "\\src\\test\\java")
+        os.makedirs(output_folder + "\\src\\main\\java")
 
     source_files = get_source_files(SOURCE_PATH, ('.java'))
     for source_file in source_files:

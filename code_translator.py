@@ -4,8 +4,8 @@ import shutil
 from utlls import ask_to_ollama, ask_to_groq, get_class_names, get_source_files, detect_language, LLM_MODE
 
 # Hardcoded folder path and target language
-FOLDER_PATH = './legacy_project/'  # <-- Set your folder path here
-TARGET_PATH = './translated/'
+FOLDER_PATH = '.\\legacy_project\\'  # <-- Set your folder path here
+TARGET_PATH = '.\\translated\\'
 TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Java
 
 # Function to write the translated code to a file

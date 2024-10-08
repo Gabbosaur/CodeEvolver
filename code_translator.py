@@ -26,9 +26,11 @@ def translate_code(source_code, source_language, target_language):
     prompt = f"Translate the following from {source_language} to {target_language}:\n\n{source_code}"
 
     if LLM_MODE == 'GROQ':
+        print(f"Using Groq")
         # Translate the code using Groq 
         return ask_to_groq(system_prompt, prompt)
     else:
+        print(f"Using Ollama")
         # Translate the code using Ollama
         return ask_to_ollama(system_prompt + prompt)
 

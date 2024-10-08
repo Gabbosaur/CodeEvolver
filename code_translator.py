@@ -10,7 +10,7 @@ TARGET_LANGUAGE = 'Java'  # Default target language for translation is set to Ja
 
 # Function to write the translated code to a file
 def write_translated_code(transformed_code, response_text):
-    os.makedirs(TARGET_PATH, exist_ok=True)
+    os.makedirs("translated", exist_ok=True)
     file_name = get_class_names(transformed_code)[0] + ".java"
     output_path = TARGET_PATH + "\\" + file_name    
     

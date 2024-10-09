@@ -13,7 +13,14 @@ EVOLVE_API_URL = "http://localhost:8000/evolve/"
 # Ensure the folder exists
 os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
 
+st.set_page_config(
+    page_title="CodeEvolver", 
+    page_icon=os.path.join("resources", "icon.png")
+)
+
+
 def save_uploaded_file(uploaded_file):
+    os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
     save_path = os.path.join(LEGACY_PROJECT_FOLDER, uploaded_file.name)
     with open(save_path, "wb") as f:
         f.write(uploaded_file.getbuffer())

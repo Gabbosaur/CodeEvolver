@@ -5,6 +5,7 @@
 /legacy_project/
 /jenkins_home/tools/*
 /jenkins_home/logs/*
+/jenkins_home/workspace/*
 /jenkins_home/.*
 
 # Byte-compiled / optimized / DLL files

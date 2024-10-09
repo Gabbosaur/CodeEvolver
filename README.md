@@ -49,6 +49,8 @@ To start **CodeEvolver**, use the following commands:
 - **API Service**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
 - **Jenkins Platform**: http://localhost:8080
+  - ***user***: Izanagi
+  - ***pwd***: Izanagi95
 
 
 <!-- 

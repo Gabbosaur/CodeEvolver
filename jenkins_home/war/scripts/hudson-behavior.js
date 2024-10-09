@@ -2582,9 +2582,6 @@ function buildFormTree(form) {
           if (e.classList.contains("complex-password-field")) {
             addProperty(p, "$redact", shortenName(e.name));
           }
-          if (e.classList.contains("secretTextarea-redact")) {
-            addProperty(p, "$redact", shortenName(e.name));
-          }
           break;
       }
     }

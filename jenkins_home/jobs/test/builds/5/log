@@ -1,166 +1,0 @@
-Started by user [8mha:////4HfhQwCOUqgQ0EJc9KUNwlPlrLKZHv0PDWs7vvYBCiF3AAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZe/dLi1CL9zKrEvMT0TAB9aHc3wgAAAA==[0mIzanagi
-[8mha:////4C9rf1lTNICbgZlUEPi6mCVkF9H1KKbaJy4jI4aMlarEAAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
-[8mha:////4PkYqQxm6VvYG0lBoalEpJP3QIem6Scf0Lv++8gQtgAWAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
-Running on [8mha:////4Lu0G3/UshPZ6zgjBbmxfVz8Y179vH8U1ejZPhjDXsgbAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZR/eT83ILSktQifY2k0sycEt3MPE19AHHxbH3KAAAA[0mJenkins in /var/jenkins_home/workspace/test
-[8mha:////4HLypraWv6C6DsmmkGjbScg9Fhk7G/vLXecQMU5qN8VzAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
-[8mha:////4M5vvlixjvyc1sF5jn/Aim8gqbTKh65bVaizKRfURDQzAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] withEnv
-[8mha:////4E3GDEPVkAk2wfi7/0Pze0oQKlIu3X1zEqVN+ETt5084AAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] {
-[8mha:////4Kl5CmdgRXNkD4yORTpaRneqik8NziOhBvmZenAbtXmgAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gwExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jcChmMxwAAAAA==[0m[Pipeline] stage
-[8mha:////4LHBNReNlJzI5/Z6bu5epF8XmJlH65KgOtEM2IFeGCdBAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0BAkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfpX/cvwAAAAA==[0m[Pipeline] { (Declarative: Tool Install)
-[8mha:////4GxEuFAhbD2QR2bVKOH6GblGYkkOHlTYvvsvWdTElxmPAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaoyVLaHxBMgiwpL/WWDdrTyRV/MOEjexcpJJ5k3zXm9Y5wQnSpZ7g73DrB2PYbR18YlSfws0cU9XrgkzBcOlmSR15rygpGJgCWtgJWBjUAfKDm2BrfDqodqg0LaXkup3FNC4boAnMFHNRaXyhTnB7j52mfDn+SuAORZg+9pD/AAeoCAqvAAAAA==[0m[Pipeline] tool
-[8mha:////4FOmIkGFjf5tW3MqQ1uYU3oaMsTZHAUqeZuFrxp/7O8wAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKBDglR0VppeIFJjHFi3QX7QlLxIr7GH4iIRMVWO9PM641lijhydKqx1HpKlVdd6N301MCxvQYeVMMXVTElDlaVdii5tqcZSxaLeVmOhcbKUhU4eXKCtW7MwxTBkCvOEid30Mh9fccTmZ7KYqJ8YYzY3Po6Mf06fwMYO0G2F+S7bfcBITL9lL0AAAA=[0m[Pipeline] envVarsForTool
-[8mha:////4DVmYl0++c/DSNt7ri0arAic2+As0dWNPIWHfMKzf/DSAAAAox+LCAAAAAAAAP9tjbEOgjAURS8YB1dHP6KEzcQ4uTYsfkGFWgvNe9g+hMkv8tf8B4kkTt7pnrOc1xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL0tBtv8AHk6T5r0AAAA=[0m[Pipeline] }
-[8mha:////4D1Vsu0NWnwVrT5eiAwNw6KivI9Vd4W3NqtishE1Z1LzAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIRNBSIitZKwwtMYowT6y7YF5KKF/E1/kBEJCq22plmXm8sU8SRo1ONpdZTqrzqQu+mpwaO7TXwoBq+qIopcbCqtEPJtT3NWLJYzMtyLDRWlqrAyZMTrHVjHqYIhlxxlji5g0bu6zueyPRUFhPlC2PE5tbXienX+RvA2HWCfLsTZPsPXymMMb0AAAA=[0m[Pipeline] // stage
-[8mha:////4CyRR6LCdVhs1p8nhlzolX2XkVYa1DkRYVNFzMVW1YtUAAAApx+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQjhESDqGgtN7zAxMY4se6CfSGpeBFf4w8EIlGx1c5Kq3m+oMwJDpS8bBy2AXMdZBd7PzU5UGovkQbZ0FnWhJmik9oNmqw7zqiJHcwRBSwULB3WkXJAz7BSjbmbKhr01YnTtO0VFMHe4AFCTWY2ib8wJlhfe5sJf56/Ahg7BrFjKDbbz7F8A9kv0o/BAAAA[0m[Pipeline] withEnv
-[8mha:////4A+h8hK4ddFVm23qK54gIGFD7lGVrqa4kO3cOQH7CKc9AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUCDbE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5Dv9rMd5mfxAbNWnxXCAAAA[0m[Pipeline] {
-[8mha:////4I3DA95rATUVgZ+IhHM6+ukGgNFFNmM8xtsUoJH/2jhDAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUSDAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD5WQ+PfCAAAA[0m[Pipeline] stage
-[8mha:////4FSTRBPjjCKpY/MjLint7GnB1iLeVXmrO/RafCgG+jAqAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUDLAgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD/s94rDCAAAA[0m[Pipeline] { (Build)
-[8mha:////4D8Za8Vl+/Gc10F/brNagXnRzqkUcOimDY+jB1qbnmNRAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiGigQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHN27Iu42+AAAA[0m[Pipeline] tool
-[8mha:////4Kr95CbE2iF6LVFiEvXkJzwtLEXKnjR/EQl7Ov2sWTeOAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiGoSEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDhnK7+9Q+vAGh1CMKvgAAAA==[0m[Pipeline] envVarsForTool
-[8mha:////4AVBxwEUG8oZaJDgwBDacSulnmZeuZmO7BYimc+5PKf8AAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohULEgIMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAAv6VbYwgAAAA==[0m[Pipeline] withEnv
-[8mha:////4CGHlJG1+BtSijx7LhLdlgUYCoKHxkDZ0cRaSdin/lcyAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogU2BDqxBp14QShCSFp9H9JUtKJE3E17kCgEhMeLNuS9Z4vqIKHhrxmVmFvMHSGDW7UObFEvr84SszSmXWEgZxirUotSXWca0tRwayihAWHpcLOUTCoI6y4FXdRO4G6PkWftwOH0sgbPKDgmRyFj98yeVhfRxkIf5y/AJiGCOV2n223+TyrN7xWSV3CAAAA[0m[Pipeline] {
-[8mha:////4HBFiZtBcMWQYHn+iLJX/UK37TxEnQVb1/aoAnZnHm0RAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUWBFT1ygLJwhNCGmj/8tPSjtxIq7GHWipxIQHy7ZkvdcbishwInaisdh6jLUXXejdlMRA3F4DDaKhi6gJIwUrlB0UGVstVVGysCjLYSVhbbEOFD26BBvZ6Icug0ZXnhNP21FC7s0dnpDJiZw0p28ZGba33kTCH+cvAMYuQX7Yzbafn8UHbGnGmsIAAAA=[0m[Pipeline] dir
-Running in /var/jenkins_home/workspace/test
-[8mha:////4GGrz/8ClHyfjB5fF7Pre/1RfL8zKC8C6/z9CheUFDdYAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycohUdEVMrFEXThCaEJJG/7dJSjpxIq7GHWipxIQHy7ZkvdcbyhjgRMFwp7GzGFvLez+aOfFMobt5ytzRlbeEkbzmjc4NKX1ea0NJw6qCwUbAVmPrKVo0CXbCyYesvERTXVKYt6MAZtUATyjETE4ypG+ZAuzvo4qEP85fAEx9AlYfFquXZ/kBAsTc3cIAAAA=[0m[Pipeline] {
-[8mha:////4MMDmlF36wBXCnDJfgcQWs3Himq5ZqIgPTKWOGL/31MvAAAAox+LCAAAAAAAAP9tjTESwiAURH/iWNhaeggyE0vHypah8QSYIEKY/wkQSeWJvJp3EM2MlVvs7NvmPV+wjgGOFDSzCgeDsTPMu0mXxTKF4eooM0sX1hFGcooJlQX16rSgoKRgSVXDisNGYecoGtQJttzKu2ycRN2cUyjfgUNt+hEeUPFiTjKkL8wBdrepj4Q/z18BzD5B3baf2vs3w5BRkb4AAAA=[0m[Pipeline] sh
-+ mvn -B -DskipTests clean package
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] ----------------------< com.example:addfunction >-----------------------
-[INFO] Building addfunction 1.0-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.4.2/spotbugs-maven-plugin-4.4.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.4.2/spotbugs-maven-plugin-4.4.2.pom (33 kB at 114 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/hazendaz/base-parent/29/base-parent-29.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/hazendaz/base-parent/29/base-parent-29.pom (91 kB at 3.2 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.4.2/spotbugs-maven-plugin-4.4.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs-maven-plugin/4.4.2/spotbugs-maven-plugin-4.4.2.jar (151 kB at 3.5 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.2/junit-jupiter-5.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.2/junit-jupiter-5.7.2.pom (3.2 kB at 291 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.pom (3.2 kB at 265 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.pom (1.2 kB at 90 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.pom (2.8 kB at 236 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.pom (3.0 kB at 250 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.pom (3.2 kB at 266 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.pom (3.2 kB at 267 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.2/junit-jupiter-5.7.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/5.7.2/junit-jupiter-5.7.2.jar (6.4 kB at 530 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/5.7.2/junit-jupiter-api-5.7.2.jar (176 kB at 6.5 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar (2.4 kB at 53 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.7.2/junit-platform-commons-1.7.2.jar (100 kB at 1.6 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/5.7.2/junit-jupiter-engine-5.7.2.jar (213 kB at 2.4 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/5.7.2/junit-jupiter-params-5.7.2.jar (567 kB at 6.1 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.7.2/junit-platform-engine-1.7.2.jar (181 kB at 729 kB/s)
-[INFO] 
-[INFO] --- clean:3.2.0:clean (default-clean) @ addfunction ---
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ addfunction ---
-[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/test/src/main/resources
-[INFO] 
-[INFO] --- compiler:3.8.1:compile (default-compile) @ addfunction ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to /var/jenkins_home/workspace/test/target/classes
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ addfunction ---
-[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/test/src/test/resources
-[INFO] 
-[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ addfunction ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to /var/jenkins_home/workspace/test/target/test-classes
-[INFO] 
-[INFO] --- surefire:3.0.0-M5:test (default-test) @ addfunction ---
-[INFO] Tests are skipped.
-[INFO] 
-[INFO] --- jar:3.4.1:jar (default-jar) @ addfunction ---
-[INFO] Building jar: /var/jenkins_home/workspace/test/target/addfunction-1.0-SNAPSHOT.jar
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.286 s
-[INFO] Finished at: 2024-10-08T22:12:00Z
-[INFO] ------------------------------------------------------------------------
-[8mha:////4MwKtyW+3NtJ5x5N/RfNF0mc/kvVfjvk8KR0VeaGWHhSAAAApB+LCAAAAAAAAP9tjbEOwiAURV9rHFwd/QiaNG7GyZWw+AXYIkLJexSodPKL/DX/QbSJk3e4uecu5/mCdQxwpKCZVTgYjJ1h3k26LJYpDFdHmVm6sI4wklNMqCyoV6cFBSUFS6oaVhw2CjtH0aBOsOVW3mXjJOrmnEL5Dhxq04/wgIoXc5IhfWEOsLtNfST8ef4KYPY+Qd3uP9W+Ad3NsHm+AAAA[0m[Pipeline] }
-[8mha:////4LfWvtnrsLc109tThTkAqrhhxZsZjbynYq0B59mUyccaAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrd/lPbN8JP5Su+AAAA[0m[Pipeline] // dir
-[8mha:////4NIWXcZTeyBAcqqAKUVRgqEz8gXW/qgH2/PgVEOyAtI2AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCKGgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcrd/lPbN/oNdtq+AAAA[0m[Pipeline] }
-[8mha:////4KcHbxG0AHfGGzdE0psUB9/bOZY+JJewTc2rhggVIdtxAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiaBBCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw84NdtDvgAAAA==[0m[Pipeline] // withEnv
-[8mha:////4Nob5Ab1wnfT7ZFo7m4Z+dMFZich1L/ohqqScdFsJ7/2AAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKBASSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryd8i13X8AfJoyIr4AAAA=[0m[Pipeline] }
-[8mha:////4IMzFL3EvpNtIwfFpGmTKb5BWhQnHRY1PkwSXs2D83wQAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikCgQSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryd8i13X8AYxhncL4AAAA=[0m[Pipeline] // stage
-[8mha:////4CFJ3+MhojI66GmHEZGQ9jhekc9cwDYB3E7oGGBv2PyxAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUBBvqxBp14QShCSFp9H9JUtKJE3E17kCgEhMeLNuS9Z4vqIKHhrxmVmFvMHSGDW7UObFEvr84SszSmXWEgZxirUotSXWca0tRwayihAWHpcLOUTCoI6y4FXdRO4G6PkWftwOH0sgbPKDgmRyFj98yeVhfRxkIf5y/AJiGCOV2n223+TyrNw8QqjDCAAAA[0m[Pipeline] stage
-[8mha:////4C4ef+dsi/NqRr5HiH2fFuUC2snF0eRf0Zlc3mzNTLeNAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUxIiYukZZOEFoQkgb/V9+UtqJE3E17kBLJSY8WLYl673eUESGE7ETjcXWY6y96ELvpiQG4vYaaBANXURNGClYoeygyNhqqYqShUVZDisJa4t1oOjRJdjIRj90GTS68px42o4Scm/u8IRMTuSkOX3LyLC99SYS/jh/ATB2CfLDbrb9/Cw+ty4Up8IAAAA=[0m[Pipeline] { (Test)
-[8mha:////4DzbbX6LEaNDSH3NMRSaC0nMbwxFaNq4c0nrzZxTI0ydAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIioERUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFDud9+ahfettHKdL4AAAA=[0m[Pipeline] tool
-[8mha:////4GGiU6XKCdkaHK+jWzxc09Iofkl89Cw/CDV5Fimy2sO5AAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIilBJR0VppeIFJjLFj3Tm2g1PxIr7GHwhEomKL1c4283zBOgY4ctBoFfWGYmvQu1HPCzOH/uo4o+ULtkyRncJG5YY7dVqw4aRgSVHCSsBGUes4GtIJtsLKu6ycJF2dU5i/g4DSdAM8oBCzOcmQvjAF2N3GLjL9PH8FMPkEZb3/VO3f9+DRbb4AAAA=[0m[Pipeline] envVarsForTool
-[8mha:////4J/duecFTdjy8ZzJpmbz0WgQO5s/+1WfUkPN8i0cGjOAAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUCDbE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5Dvd7Md5mfxAcRgVzbCAAAA[0m[Pipeline] withEnv
-[8mha:////4CfVBiBsF4+b18e+ET3xR5HVOUBvkiwada7zoIaNEy3vAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0ACbE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5Dv9rMd5mfxASMfXIzCAAAA[0m[Pipeline] {
-[8mha:////4GQTOewCcF3LpaefJ6y5AUZiLHVCd5TVZzQB+rRPHde0AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0QLAgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD02yRsvCAAAA[0m[Pipeline] dir
-Running in /var/jenkins_home/workspace/test
-[8mha:////4CCff7o7o0jeg6UkuL35Z8zY59hTgltS+d3Nz1Tuy1MeAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0QIIBMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfADpB/iZwgAAAA==[0m[Pipeline] {
-[8mha:////4EEuYC08KKvwByc7UmcJmqnm9PcouxXSweLzZsM29RZfAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSUICEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDhnK7+9Q+vAEGDPXtvgAAAA==[0m[Pipeline] sh
-+ mvn test
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] ----------------------< com.example:addfunction >-----------------------
-[INFO] Building addfunction 1.0-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ addfunction ---
-[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/test/src/main/resources
-[INFO] 
-[INFO] --- compiler:3.8.1:compile (default-compile) @ addfunction ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ addfunction ---
-[INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/test/src/test/resources
-[INFO] 
-[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ addfunction ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- surefire:3.0.0-M5:test (default-test) @ addfunction ---
-Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.jar
-Progress (1): 1.4/137 kBProgress (1): 2.8/137 kBProgress (1): 4.1/137 kBProgress (1): 5.5/137 kBProgress (1): 6.9/137 kBProgress (1): 8.3/137 kBProgress (1): 9.7/137 kBProgress (1): 11/137 kB Progress (1): 12/137 kBProgress (1): 14/137 kBProgress (1): 15/137 kBProgress (1): 17/137 kBProgress (1): 18/137 kBProgress (1): 19/137 kBProgress (1): 21/137 kBProgress (1): 22/137 kBProgress (1): 23/137 kBProgress (1): 25/137 kBProgress (1): 26/137 kBProgress (1): 28/137 kBProgress (1): 29/137 kBProgress (1): 30/137 kBProgress (1): 32/137 kBProgress (1): 33/137 kBProgress (1): 34/137 kBProgress (1): 36/137 kBProgress (1): 37/137 kBProgress (1): 39/137 kBProgress (1): 40/137 kBProgress (1): 41/137 kBProgress (1): 43/137 kBProgress (1): 44/137 kBProgress (1): 46/137 kBProgress (1): 47/137 kBProgress (1): 48/137 kBProgress (1): 50/137 kBProgress (1): 51/137 kBProgress (1): 52/137 kBProgress (1): 54/137 kBProgress (1): 55/137 kBProgress (1): 56/137 kBProgress (1): 58/137 kBProgress (1): 59/137 kBProgress (1): 61/137 kBProgress (1): 62/137 kBProgress (1): 63/137 kBProgress (1): 79/137 kBProgress (1): 96/137 kBProgress (1): 112/137 kBProgress (1): 128/137 kBProgress (1): 137 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.jar (137 kB at 524 kB/s)
-Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.pom
-Progress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.pom (3.0 kB at 233 kB/s)
-[INFO] 
-[INFO] -------------------------------------------------------
-[INFO]  T E S T S
-[INFO] -------------------------------------------------------
-[INFO] Running AddFunctionTest
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s - in AddFunctionTest
-[INFO] 
-[INFO] Results:
-[INFO] 
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.160 s
-[INFO] Finished at: 2024-10-08T22:12:04Z
-[INFO] ------------------------------------------------------------------------
-[8mha:////4PiEbi4nQnb8IlzgdtNC2wRvQ7K6Elkovmbz3QrYHTruAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSUCCEqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFBu95/avQF5ECgKvgAAAA==[0m[Pipeline] }
-[8mha:////4JiB3j7S4aXFPcB4tcTcr6Q+dVPZDcaSDOiCZwhhKAFsAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCBKJBqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw+pT4efvgAAAA==[0m[Pipeline] // dir
-[8mha:////4MSAt8VOeS4AA6Vxt7phvNNt37+ol1TsqODiVJBfvcmxAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBFQoFa3lhheYxBgn1l2wHZyKF/E1/oBFJCq2WO1sM683LIOHmr3BTlNvKTQWBzeavDCx76+OE3Z8wYYpsNModZLc6tOMkqOGOUUJCwErTY3jYMlEWItOPVTlFJnqHH3+jgJK297hCYXI5qh8/MLkYXMb28D08/wVwDQMEcr9Ntfu8AG2zdLNvgAAAA==[0m[Pipeline] }
-[8mha:////4HZxQRbb1AYX5s+N8uTFM5oII1IkQvw1XZQXw5uYLC2bAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiQTpEldZKwwtMbIwT687YDknFi/gaf8AiEhVbrHa2mdcb1jHAiYPBXtNgKXYWvRtNXjhxGK6OJ+z5gh1TZKex1VPLSjcLtpw0LClKWAnYaOocR0smwVb08iErJ8lU5xTydxRQWnWHJxQim5MM6QtzgN1tVJHp5/krgNn7BGW9z3WoP46PQTy+AAAA[0m[Pipeline] // withEnv
-[8mha:////4MchphWwUoUVRCrNx2pxe3jOj5vCCYXbxt4xGSLXyWuUAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPMIRCh2iSmul4QUmPowT687YDknFi/gaf8AiEhVbrHa2mdcb1jHAiYMRPdJgKXZWeDeavMTEYbg6nkTPF9ExRXYoWpxa1tgs2HJCWFKUsJKwQeocR0smwVb26qEqp8hU5xTyd5RQWn2HJxQym5MK6QtzgN1t1JHp5/krgNn7BOWhzlXvP6Sod4e+AAAA[0m[Pipeline] }
-[8mha:////4LlX9xUya3BCRhNIi4YGh3qpdF16AwLKA4nZI8r2/HA/AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCRDpEldZKwwtMbIwT687YDknFi/gaf8AiEhVbrHa2mdcb1jHAiYPBXtNgKXYWvRtNXjhxGK6OJ+z5gh1TZKex1VPLSjcLtpw0LClKWAnYaOocR0smwVb08iErJ8lU5xTydxRQWnWHJxQim5MM6QtzgN1tVJHp5/krgNn7BGVd5zrsP4qode2+AAAA[0m[Pipeline] // stage
-[8mha:////4C2//sVzCsduu7v3da37dU15R+ZjQS0NPVZeBiovzQ2pAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPMIRUqgQVVorDS8w8WGcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThyM6JEGS7GzwrvR5CUmDsPV8SR6voiOKbJD0eLUssZmwZYTwpKihJWEDVLnOFoyCbayVw9VOUWmOqeQv6OE0uo7PKGQ2ZxUSF+YA+xuo45MP89fAczeJyjrQ659/QG03XITvgAAAA==[0m[Pipeline] }
-[8mha:////4NZiYRuJiDDIK7HB+0fYPtmyYBTXl5yBSGCj4oocau6XAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBKJBqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDuD7m2uw+5OoILvgAAAA==[0m[Pipeline] // withEnv
-[8mha:////4DjDdu3mHh1Jf/COBfShbIsHyzOD90o0nIFk3vWW7EdHAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMJpEBSIitZKwwtMYowT6y7YF5KKF/E1/kBEJCq22plmXm8sU8SRo1ONpdZTqrzqQu+mpwaO7TXwoBq+qIopcbCqtEPJtT3NWLJYzMtyLDRWlqrAyZMTrHVjHqYIhlxxlji5g0bu6zueyPRUFhPlC2PE5tbXienX+RvA2HWCfLsXZLsPCgem3r0AAAA=[0m[Pipeline] }
-[8mha:////4BqNF027wKLvq54ii9Wnsz+EOfE2yYT/Kf7sjzxTntdQAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMJpQEJCVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5Nu9INt9AGHB/8W9AAAA[0m[Pipeline] // withEnv
-[8mha:////4DDIm+SDGn6HEvU8mObKZHF18uuWnSqpGKVwkQBs6E7cAAAAox+LCAAAAAAAAP9tjTESgjAQRT84FraWHiI0NI5jZZuh8QQRYgxkdjFZhMoTeTXvICMzVv7qv9e81xvrFHHk6FRrqfOUaq/6MLj5qZFjdw08qpYvqmZKHKyq7FhxY08LViwWy7IcK42NpTpw8uQEW92ahymCIVecJc7uoJH75o4nMj2XxUT5whSxuw1NYvp1/gYw9b0gL/eCrPwAR9iYj70AAAA=[0m[Pipeline] }
-[8mha:////4GsABnEEuIMfQS1EPLFqzNbFj8MqBG/n8S1Ss8nRah8xAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMJBQlSIitZKwwtMYowT6y7YF5KKF/E1/kBEJCq22plmXm8sU8SRo1ONpdZTqrzqQu+mpwaO7TXwoBq+qIopcbCqtEPJtT3NWLJYzMtyLDRWlqrAyZMTrHVjHqYIhlxxlji5g0bu6zueyPRUFhPlC2PE5tbXienX+RvA2HWCfL8VZLsPMPyw170AAAA=[0m[Pipeline] // node
-[8mha:////4Gha+e3U+44R5ZUeJyZR4H8XPitJhYbCuXqY04X+spkEAAAAox+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIRSFSIitZKwwtMYowT6y7YF5KKF/E1/kBEJCq22plmXm8sU8SRo1ONpdZTqrzqQu+mpwaO7TXwoBq+qIopcbCqtEPJtT3NWLJYzMtyLDRWlqrAyZMTrHVjHqYIhlxxlji5g0bu6zueyPRUFhPlC2PE5tbXienX+RvA2HWCfL8VZLsPFuXXnb0AAAA=[0m[Pipeline] End of Pipeline
-Finished: SUCCESS

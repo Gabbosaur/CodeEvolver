@@ -38,6 +38,7 @@ def main(folder_path=FOLDER_PATH, target_language=TARGET_LANGUAGE):
 
     # Clean up the output folder
     clean_env()
+    os.makedirs(FOLDER_PATH, exist_ok=True)
 
     # Get all files that need to be processed (Python, COBOL, Java)
     source_files = get_source_files(folder_path, ('.py', '.cob', '.cbl', '.java'))

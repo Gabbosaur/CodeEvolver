@@ -34,11 +34,10 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   ```bash
    sudo docker run -p 8080:8080 -p 50000:50000 -v $(pwd)/jenkins_home:/var/jenkins_home -v $(pwd)/jenkins_home/workspace:/var/jenkins_home/workspace -v $(pwd)/jenkins_home/users:/var/jenkins_home/users -v $(pwd)/jenkins_home/jobs:/var/jenkins_home/jobs --restart=on-failure jenkins/jenkins:lts-jdk17
   ```
-2. Start the FastAPI application:
+2. Start the FastAPI application (you will see here the relevant logs processing in background.):
   ```bash
    uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
   ```
-You will see here the relevant logs processing in background.
 
 3. Start CodeEvolver UI:
   ```bash

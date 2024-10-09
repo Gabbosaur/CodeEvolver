@@ -15,15 +15,15 @@ Ensure you are in Linux environment and you have Docker installed on your system
   ```bash
    git clone https://github.com/Gabbosaur/CodeEvolver.git
   ```
-2. Enter the project and configure the environment:
+2. Navigate into the project, create a virtual environment and activate it:
   ```bash
    cd CodeEvolver
    python -m venv venv
    source venv/bin/activate
   ```
-3. Install tkinter:
+3. Install the libraries:
   ```bash
-   sudo apt-get install python3-tk
+   pip install -r requirements.txt
   ```
 
 ## Deploy
@@ -36,12 +36,12 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   ```
 2. Start the FastAPI application (you will see here the relevant logs processing in background):
   ```bash
-   uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
+   uvicorn app:app --host 0.0.0.0 --port 8000 --reload
   ```
 
 3. Start CodeEvolver UI:
   ```bash
-   streamlit run ui.py &
+   streamlit run ui.py
   ```
 3. Go to CodeEvolver UI via browser http://localhost:8501
 

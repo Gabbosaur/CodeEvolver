@@ -3,8 +3,8 @@
   <tokenStats>
     <jenkins.security.apitoken.ApiTokenStats_-SingleTokenStats>
       <tokenUuid>727a4f06-d17c-4034-8645-5682709eb3b8</tokenUuid>
-      <lastUseDate>2024-10-08 22:11:49.17 UTC</lastUseDate>
-      <useCounter>8</useCounter>
+      <lastUseDate>2024-10-09 14:52:17.893 UTC</lastUseDate>
+      <useCounter>53</useCounter>
     </jenkins.security.apitoken.ApiTokenStats_-SingleTokenStats>
   </tokenStats>
 </jenkins.security.apitoken.ApiTokenStats>

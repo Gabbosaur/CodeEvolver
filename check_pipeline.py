@@ -41,13 +41,13 @@ def is_job_finished(job_url, base_build_url, username, api_token):
     print(console_url)
     if console_response.status_code == 200:
         print(console_response.text)
-        return console_response.text
+        return os.path.join(jenkins_build_url, str(last_build_number+1)), console_response.text
     else:
        return f"Failed to get console output. Status code: {console_response.status_code}"
 
 
 def main():
-    is_job_finished(jenkins_job_url, jenkins_build_url, username, api_token)
+    return is_job_finished(jenkins_job_url, jenkins_build_url, username, api_token)
 
 if __name__ == "__main__":
     main()

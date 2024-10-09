@@ -51,7 +51,7 @@ def evolve(body: Body):
     move_to_pipeline()       
     call_pipeline()
     #return "OK"
-    sleep(3)
+    sleep(8)
     return check_pipeline()
 
 @app.get("/download_folder")

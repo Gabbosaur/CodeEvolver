@@ -69,7 +69,7 @@ def main():
                             response = requests.post(EVOLVE_API_URL, json=data)
                             response.raise_for_status()
                             output = response.json()
-                            st.success('Code successfully translated and enhanced!', icon="✅")
+                            st.success(f'Code successfully translated and enhanced!\nCheck pipeline status {output}' , icon="✅")
 
                             # Create the ZIP buffer of the processed folder
                             zip_buffer = create_zip_of_folder(EVOLVED_PROJECT_FOLDER)
@@ -97,8 +97,9 @@ def main():
                     try:
                         response = requests.post(EVOLVE_API_URL, json=data)
                         response.raise_for_status()
-                        output = response.json()
-                        st.success('Code successfully translated and enhanced!', icon="✅")
+                        output = response.json()[0]
+                        st.success(f'Code successfully translated and enhanced!', icon="✅")
+                        st.markdown(f'Check pipeline status [here]({output})')
                         
                         # Create the ZIP buffer of the processed folder
                         zip_buffer = create_zip_of_folder(EVOLVED_PROJECT_FOLDER)

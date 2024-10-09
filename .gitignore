@@ -4,6 +4,7 @@
 /translated/
 /legacy_project/
 /jenkins_home/tools/*
+/jenkins_home/logs/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

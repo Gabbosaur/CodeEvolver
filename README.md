@@ -28,7 +28,7 @@ Ensure you are in Linux environment and you have Docker installed on your system
 
 ## Deploy
 
-To start **CodeEvolver**, use the following commands:
+To start **CodeEvolver**, open 3 different terminals and use the following commands:
 
 1. Run the Jenkins Docker container:
   ```bash
@@ -36,11 +36,12 @@ To start **CodeEvolver**, use the following commands:
   ```
 2. Start the FastAPI application:
   ```bash
-   nohup uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
+   uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
   ```
+You can see the relevant logs processing in background.
 3. Start CodeEvolver UI:
   ```bash
-   nohup streamlit run ui.py &
+   streamlit run ui.py &
   ```
 3. Go to CodeEvolver UI via browser http://localhost:8501
 

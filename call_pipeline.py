@@ -4,7 +4,7 @@ from requests.auth import HTTPBasicAuth
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(override=True)
 
 # URL and credentials from environment variables
 url = os.getenv("JENKINS_BUILD_BASE_URL") + "/build"

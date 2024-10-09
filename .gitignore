@@ -3,6 +3,7 @@
 /evolved/
 /translated/
 /legacy_project/
+/jenkins_home/tools/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

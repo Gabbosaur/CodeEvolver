@@ -1,0 +1,33 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 17
+Specification-Title: Web for Blue Ocean
+Specification-Version: 1.27
+Implementation-Title: Web for Blue Ocean
+Implementation-Version: 1.27.16
+Group-Id: io.jenkins.blueocean
+Artifact-Id: blueocean-web
+Short-Name: blueocean-web
+Long-Name: Web for Blue Ocean
+Url: https://github.com/jenkinsci/blueocean-plugin/blob/master/blueocean
+ /doc/BlueOcean.adoc
+Plugin-Version: 1.27.16
+Hudson-Version: 2.426.3
+Jenkins-Version: 2.426.3
+Plugin-Dependencies: blueocean-core-js:1.27.16,blueocean-rest:1.27.16,je
+ nkins-design-language:1.27.16,variant:60.v7290fc0eb_b_cd
+Plugin-Developers: Thorsten Iberian Sumurai:scherler:,Cliff Meyers:cliff
+ meyers:,Tom Fennelly:tfennelly:,Vivek Pandey:vivek:,Kohsuke:kohsuke:,Jo
+ sh McDonald:sophistifunk:,Ivan Meredith:imeredith:,Michael Neale:michae
+ lneale:,Keith Zantow:kzantow:,James Dumay:i386:,Marc:marcesher:,Paul Dr
+ agoonis:dragoonis:,Ivan Santos:pragmaticivan:,Peter Dave Hello:PeterDav
+ eHello:,Alexandru Somai:alexsomai:
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/blueocean-plu
+ gin.git
+Plugin-ScmTag: blueocean-parent-1.27.16
+Plugin-ScmUrl: https://github.com/jenkinsci/blueocean-plugin
+Plugin-GitHash: 2645a02f1ad20eca9bdb909dc915b2608993c7c3
+Implementation-Build: 2645a02f1ad20eca9bdb909dc915b2608993c7c3
+

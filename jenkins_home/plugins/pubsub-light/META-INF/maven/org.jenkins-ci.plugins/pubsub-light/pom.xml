@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jenkins-ci.plugins</groupId>
+  <artifactId>pubsub-light</artifactId>
+  <version>1.18</version>
+  <packaging>hpi</packaging>
+  <name>Jenkins Pub-Sub "light" Bus</name>
+  <description>A simple Publish-Subscribe light-weight event bus for Jenkins</description>
+  <url>https://github.com/jenkinsci/pubsub-light-plugin</url>
+  <inceptionYear>2016</inceptionYear>
+  <scm>
+    <connection>scm:git:https://github.com/jenkinsci/pubsub-light-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/pubsub-light-plugin.git</developerConnection>
+    <tag>pubsub-light-1.18</tag>
+    <url>https://github.com/jenkinsci/pubsub-light-plugin</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>maven.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
+  <dependencies>
+    <dependency>
+      <groupId>org.jenkins-ci.modules</groupId>
+      <artifactId>instance-identity</artifactId>
+      <version>142.v04572ca_5b_265</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jenkins-ci.tools</groupId>
+        <artifactId>maven-hpi-plugin</artifactId>
+        <version>3.49</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

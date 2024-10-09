@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 11
+Specification-Title: Display URL for Blue Ocean
+Specification-Version: 2.4
+Implementation-Title: Display URL for Blue Ocean
+Implementation-Version: 2.4.3
+Group-Id: org.jenkins-ci.plugins
+Artifact-Id: blueocean-display-url
+Short-Name: blueocean-display-url
+Long-Name: Display URL for Blue Ocean
+Url: https://github.com/jenkinsci/blueocean-display-url-plugin
+Plugin-Version: 2.4.3
+Hudson-Version: 2.387.3
+Jenkins-Version: 2.387.3
+Plugin-Dependencies: blueocean-rest:1.27.5.1,workflow-job:1326.ve643e00e
+ 9220,branch-api:2.1128.v717130d4f816,display-url-api:2.200.vb_9327d6587
+ 81,scm-api:676.v886669a_199a_a_
+Plugin-Developers: Ivan Meredith:imeredith:ivan@ivan.net.nz
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/license/mit/
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/blueocean-dis
+ play-url-plugin.git
+Plugin-ScmTag: blueocean-display-url-2.4.3
+Plugin-ScmUrl: https://github.com/jenkinsci/blueocean-display-url-plugin
+Plugin-GitHash: a135b5e72ea7c6ff5291560af5cf2a6b1319af38
+Implementation-Build: a135b5e72ea7c6ff5291560af5cf2a6b1319af38
+

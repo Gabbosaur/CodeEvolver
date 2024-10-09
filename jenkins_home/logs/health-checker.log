@@ -1,6 +1,6 @@
-Starting health checks at Wed Oct 09 16:16:35 UTC 2024
-Health check results at Wed Oct 09 16:16:35 UTC 2024:
- * disk-space: Result{isHealthy=true, duration=0, timestamp=2024-10-09T16:16:35.732Z}
- * plugins: Result{isHealthy=true, message=No failed plugins, duration=0, timestamp=2024-10-09T16:16:35.732Z}
- * temporary-space: Result{isHealthy=true, duration=0, timestamp=2024-10-09T16:16:35.732Z}
- * thread-deadlock: Result{isHealthy=true, duration=0, timestamp=2024-10-09T16:16:35.733Z}
+Starting health checks at Wed Oct 09 17:47:01 UTC 2024
+Health check results at Wed Oct 09 17:47:01 UTC 2024:
+ * disk-space: Result{isHealthy=true, duration=0, timestamp=2024-10-09T17:47:01.722Z}
+ * plugins: Result{isHealthy=true, message=No failed plugins, duration=0, timestamp=2024-10-09T17:47:01.722Z}
+ * temporary-space: Result{isHealthy=true, duration=0, timestamp=2024-10-09T17:47:01.723Z}
+ * thread-deadlock: Result{isHealthy=true, duration=1, timestamp=2024-10-09T17:47:01.723Z}

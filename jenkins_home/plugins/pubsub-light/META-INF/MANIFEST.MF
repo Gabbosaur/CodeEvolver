@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Created-By: Maven Archiver 3.6.0
+Build-Jdk-Spec: 11
+Specification-Title: Jenkins Pub-Sub "light" Bus
+Specification-Version: 1.18
+Implementation-Title: Jenkins Pub-Sub "light" Bus
+Implementation-Version: 1.18
+Group-Id: org.jenkins-ci.plugins
+Artifact-Id: pubsub-light
+Short-Name: pubsub-light
+Long-Name: Jenkins Pub-Sub "light" Bus
+Url: https://github.com/jenkinsci/pubsub-light-plugin
+Plugin-Version: 1.18
+Hudson-Version: 2.361.4
+Jenkins-Version: 2.361.4
+Plugin-Dependencies: instance-identity:142.v04572ca_5b_265
+Plugin-Developers: 
+Plugin-ScmConnection: scm:git:https://github.com/jenkinsci/pubsub-light-
+ plugin.git
+Plugin-ScmTag: pubsub-light-1.18
+Plugin-ScmUrl: https://github.com/jenkinsci/pubsub-light-plugin
+Plugin-GitHash: 2bb19543b720619d0a48fc9a45d56e9e45f1a887
+Implementation-Build: 2bb19543b720619d0a48fc9a45d56e9e45f1a887
+

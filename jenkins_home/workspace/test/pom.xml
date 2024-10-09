@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>add-function</artifactId>
+  <artifactId>subtraction-function</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
 
-  <name>Add Function</name>
+  <name>Subtraction Function</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -21,12 +21,6 @@
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs</artifactId>
       <version>4.4.2</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

@@ -5,7 +5,7 @@ from groq import Groq
 import re
 from dotenv import load_dotenv
 
-load_dotenv()  # take environment variables from .env.
+load_dotenv(override=True)  # take environment variables from .env.
 
 LLM_MODE = os.getenv('LLM_MODE')
 GROQ_API_KEY = os.getenv('GROQ_API_KEY')

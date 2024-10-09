@@ -38,7 +38,8 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   ```bash
    uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
   ```
-You can see the relevant logs processing in background.
+You will see here the relevant logs processing in background.
+
 3. Start CodeEvolver UI:
   ```bash
    streamlit run ui.py &

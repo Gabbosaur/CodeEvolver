@@ -7,6 +7,8 @@
 /jenkins_home/logs/*
 /jenkins_home/workspace/*
 /jenkins_home/.*
+/jenkins_home/jobs/test/*
+!/jenkins_home/jobs/test/config.xml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -37,12 +37,13 @@ def main():
 
     st.set_page_config(
         page_title="CodeEvolver", 
-        page_icon=os.path.join("resources", "codeevolver_icon.png")
+        page_icon=os.path.join("resources", "codeevolver_icon.png"),
+        layout="centered"
     )
 
     col1, col2 = st.columns([1, 10])  # Adjust the ratios as needed
     with col1:
-        st.image(os.path.join("resources", "codeevolver_icon.png"), width=85)  # Replace with your image path
+        st.image(os.path.join("resources", "codeevolver_icon.png"), width=69)
     with col2:
         st.title("CodeEvolver")
 

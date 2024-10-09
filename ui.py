@@ -3,6 +3,7 @@ import os
 import zipfile
 import tempfile
 import requests
+import shutil
 from io import BytesIO
 
 # Define the path for the legacy_project folder
@@ -13,13 +14,9 @@ EVOLVE_API_URL = "http://localhost:8000/evolve/"
 # Ensure the folder exists
 os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
 
-st.set_page_config(
-    page_title="CodeEvolver", 
-    page_icon=os.path.join("resources", "icon.png")
-)
-
 
 def save_uploaded_file(uploaded_file):
+    shutil.rmtree(LEGACY_PROJECT_FOLDER, ignore_errors=True)
     os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
     save_path = os.path.join(LEGACY_PROJECT_FOLDER, uploaded_file.name)
     with open(save_path, "wb") as f:
@@ -37,12 +34,22 @@ def create_zip_of_folder(folder_path):
     return zip_buffer
 
 def main():
-    st.title("CodeEvolver")
+
+    st.set_page_config(
+        page_title="CodeEvolver", 
+        page_icon=os.path.join("resources", "icon.png")
+    )
+
+    col1, col2 = st.columns([1, 10])  # Adjust the ratios as needed
+    with col1:
+        st.image(os.path.join("resources", "icon.png"), width=85)  # Replace with your image path
+    with col2:
+        st.title("CodeEvolver")
 
     # Option for user to choose between folder and specific files.
     upload_option = st.radio(
         "Select what you want to upload:",
-        ("Upload ZIP", "Upload Specific Files")
+        ("Upload Specific Files", "Upload ZIP")
     )
     
     uploaded_files = None

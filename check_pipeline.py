@@ -32,7 +32,7 @@ def is_job_finished(job_url, base_build_url, username, api_token):
             print(f"Failed to get job status. Status code: {response.status_code}")
 
         # Wait before polling again
-        time.sleep(10)
+        time.sleep(5)
 
     console_url = f"{base_build_url}/{last_build_number}/consoleText"
 
@@ -41,7 +41,7 @@ def is_job_finished(job_url, base_build_url, username, api_token):
     print(console_url)
     if console_response.status_code == 200:
         print(console_response.text)
-        return os.path.join(jenkins_build_url, str(last_build_number+1)), console_response.text
+        return os.path.join(jenkins_build_url, str(last_build_number)), console_response.text
     else:
        return f"Failed to get console output. Status code: {console_response.status_code}"
 

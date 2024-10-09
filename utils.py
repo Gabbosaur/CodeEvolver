@@ -119,6 +119,5 @@ def ask_to_groq(system_prompt, prompt):
 
 
 def clean_env():
-    shutil.rmtree('legacy_project', ignore_errors=True)
     shutil.rmtree('translated', ignore_errors=True)
     shutil.rmtree('evolved', ignore_errors=True)

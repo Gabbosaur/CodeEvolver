@@ -39,9 +39,9 @@ def enhance_code_with_llm(java_code):
     if LLM_MODE == 'GROQ':
         return enhance_code_with_groq(prompt)
     else:
-        return enhance_ocde_with_ollama(prompt)
+        return enhance_code_with_ollama(prompt)
 
-def enhance_ocde_with_ollama(prompt):
+def enhance_code_with_ollama(prompt):
     # Call Ollama and pass the prompt
     result = ollama.chat(model='codellama', messages=[
         {

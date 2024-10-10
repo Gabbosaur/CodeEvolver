@@ -2,13 +2,13 @@
 
 **CodeEvolver** is a powerful AI-powered code transformation and enhancement tool designed to continuously optimize software quality through iterative improvement.
 
-## Key Features
+## 🔑 Key Features
 
 - **Code Transformation**: Utilizes advanced AI algorithms to analyze and automatically improve existing code.
 - **Continuous Improvement**: Integrates feedback and test results to refine the code continuously.
 - **Automated Testing**: Executes functional and unit tests to ensure that changes do not compromise the stability of the project.
 
-## Installation Requirements
+## 🔧 Installation and requirements
 
 Ensure you are in **`Linux`** environment and you have **`Docker`** installed on your system to run the application.
 1. Clone this repository:
@@ -26,7 +26,7 @@ Ensure you are in **`Linux`** environment and you have **`Docker`** installed on
    pip install -r requirements.txt
   ```
 
-## Deploy
+## 🚀 Deploy
 
 To start **CodeEvolver**, open 3 different terminals and use the following commands (otherwise append " &" for running in the background):
 
@@ -45,7 +45,7 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   ```
 3. Open your web browser and navigate to the CodeEvolver UI at http://localhost:8501. You can test the application using our sample COBOL file located in the `resources/easy` folder.
 
-## Accessing Services
+## 🔗 Accessing Services
 - **CodeEvolver UI**: http://localhost:8501
 - **API Service**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
@@ -53,7 +53,7 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   - ***user***: Izanagi
   - ***pwd***: Izanagi95
 
-## Notes
+## ⚠️ Notes
 Normally, the env file should not be saved in the repository, but to facilitate those who will need to test our solution, it has been included. Similarly, data such as the jenkins_home folder should not be saved either.
 
 In the `.env` file, we can manage how the Large Language Model (LLM) is executed:

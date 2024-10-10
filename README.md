@@ -10,7 +10,7 @@
 
 ## Installation Requirements
 
-Ensure you are in **Linux** environment and you have **Docker** installed on your system to run the application.
+Ensure you are in **`Linux`** environment and you have **`Docker`** installed on your system to run the application.
 1. Clone this repository:
   ```bash
    git clone https://github.com/Gabbosaur/CodeEvolver.git
@@ -28,7 +28,7 @@ Ensure you are in **Linux** environment and you have **Docker** installed on you
 
 ## Deploy
 
-To start **CodeEvolver**, open 3 different terminals and use the following commands:
+To start **CodeEvolver**, open 3 different terminals and use the following commands (otherwise append " &" for running in the background):
 
 1. Run the Jenkins Docker container:
   ```bash
@@ -55,6 +55,13 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
 
 ## Notes
 Normally, the env file should not be saved in the repository, but to facilitate those who will need to test our solution, it has been included. Similarly, data such as the jenkins_home folder should not be saved either.
+
+In the `.env` file, we can manage how the Large Language Model (LLM) is executed:
+
+- **LLM_MODE** (default: **GROQ**):
+  - **OLLAMA**: The LLM runs locally using the Ollama tool installed on your machine, utilizing local resources. Before running the application in this mode, you must first install the Ollama tool locally.
+  - **GROQ**: The LLM runs on a cloud service via an API key, meaning it is executed remotely and does not rely on local resources. However, this introduces potential risks to the security and privacy of the data being generated.
+
 <!-- 
 ## Contributing
 If you wish to contribute to CodeEvolver, feel free to open an issue or submit a pull request. Every contribution is welcome!

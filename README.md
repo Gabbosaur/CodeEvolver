@@ -70,6 +70,9 @@ In the `.env` file, we can manage how the Large Language Model (LLM) is executed
   - **OLLAMA**: The LLM runs locally using the Ollama tool installed on your machine, utilizing local resources. Before running the application in this mode, you must first install the Ollama tool locally.
   - **GROQ**: The LLM runs on a cloud service via an API key, meaning it is executed remotely and does not rely on local resources. However, this introduces potential risks to the security and privacy of the data being generated.
 
+## 👩‍💻 Authors
+- Gabriele Guo
+- Chenghao Xia
 <!-- 
 ## Contributing
 If you wish to contribute to CodeEvolver, feel free to open an issue or submit a pull request. Every contribution is welcome!

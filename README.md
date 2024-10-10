@@ -1,4 +1,7 @@
 # CodeEvolver
+<p align="center">
+  <img src="https://github.com/Gabbosaur/CodeEvolver/blob/main/resources/codeevolver_icon.png" width="100" title="code evolver logo">
+</p>
 
 **CodeEvolver** is a powerful AI-powered code transformation and enhancement tool designed to continuously optimize software quality through iterative improvement.
 
@@ -7,6 +10,11 @@
 - **Code Transformation**: Utilizes advanced AI algorithms to analyze and automatically improve existing code.
 - **Continuous Improvement**: Integrates feedback and test results to refine the code continuously.
 - **Automated Testing**: Executes functional and unit tests to ensure that changes do not compromise the stability of the project.
+
+## 🏗️ Architecture
+<p align="center">
+  <img src="https://github.com/Gabbosaur/CodeEvolver/blob/main/resources/codeevolver_architecture.png" width="70%" title="code evolver architecture">
+</p>
 
 ## 🔧 Installation and requirements
 

@@ -12,11 +12,11 @@ EVOLVED_PROJECT_FOLDER = "evolved"
 EVOLVE_API_URL = "http://localhost:8000/evolve/"
 
 # Ensure the folder exists
+shutil.rmtree(LEGACY_PROJECT_FOLDER, ignore_errors=True)
 os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
 
 
 def save_uploaded_file(uploaded_file):
-    shutil.rmtree(LEGACY_PROJECT_FOLDER, ignore_errors=True)
     os.makedirs(LEGACY_PROJECT_FOLDER, exist_ok=True)
     save_path = os.path.join(LEGACY_PROJECT_FOLDER, uploaded_file.name)
     with open(save_path, "wb") as f:
@@ -131,6 +131,8 @@ def main():
             file_name="CodeEvolver_evolved_legacy_project.zip",
             mime="application/zip"
         )
+        shutil.rmtree(LEGACY_PROJECT_FOLDER, ignore_errors=True)
+
 
 if __name__ == "__main__":
     main()

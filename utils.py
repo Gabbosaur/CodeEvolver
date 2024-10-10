@@ -12,7 +12,10 @@ GROQ_API_KEY = os.getenv('GROQ_API_KEY')
 
 client = None
 if LLM_MODE == 'GROQ':
+    print(f"Using Groq")
     client = Groq(api_key=GROQ_API_KEY)
+else:
+    print(f"Using OLLAMA")
 
 # Function to determine the language of the source file based on its extension
 def detect_language(file_path):

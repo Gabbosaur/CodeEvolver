@@ -48,11 +48,12 @@ def check_pipeline_endpoint():
 def evolve(body: Body):
     translate(body)
     enhance()
-    move_to_pipeline()       
-    call_pipeline()
-    #return "OK"
-    sleep(8)
-    return check_pipeline()
+    return "OK"
+    # move_to_pipeline()       
+    # call_pipeline()
+    
+    # sleep(8)
+    # return check_pipeline()
 
 @app.get("/download_folder")
 async def download_folder():

@@ -2,6 +2,7 @@
 <p align="center">
   <img src="https://github.com/Gabbosaur/CodeEvolver/blob/main/resources/codeevolver_icon.png" width="100" title="code evolver logo">
 </p>
+
 **CodeEvolver** is a powerful AI-powered code transformation and enhancement tool designed to continuously optimize software quality through iterative improvement.
 
 ## 🔑 Key Features

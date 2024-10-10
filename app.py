@@ -17,32 +17,33 @@ class Body(BaseModel):
 
 
 app = FastAPI()
-# TODO manage all the returns
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+# Standard response
+def standard_response():
+    return {"message": "Operation completed successfully"}
 
 @app.post("/translate/")
-def translate(body: Body):
-    translater(body.url) 
-    return {"Hello": "World"}
+def translate(body: dict = Body(...)):
+    if "url" in body:
+        translater(body["url"])
+    else:
+        return {"error": "Missing 'url' in request body"}
+    return standard_response()
 
 @app.post("/enhance/")
 def enhance():
     enhancer()
-    # enhancer("./evolved") 
-    return {"Hello": "World"}
+    return standard_response()
 
 @app.post("/call_pipeline/")
 def call_pipeline_endpoint():
-    call_pipeline() 
-    return {"Hello": "World"}
+    call_pipeline()
+    return standard_response()
 
 @app.get("/check_pipeline/")
 def check_pipeline_endpoint():
     check_pipeline()
-    return {"Hello": "World"}
+    return standard_response()
 
 @app.post("/evolve/")
 def evolve(body: Body):

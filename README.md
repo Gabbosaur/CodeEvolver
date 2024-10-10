@@ -18,7 +18,7 @@ Ensure you are in **`Linux`** environment and you have **`Docker`** installed on
 2. Navigate into the project, create a virtual environment and activate it:
   ```bash
    cd CodeEvolver
-   python -m venv venv
+   python -m venv venv # or python3 depending on your installation
    source venv/bin/activate
   ```
 3. Install the libraries:

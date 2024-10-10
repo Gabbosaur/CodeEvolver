@@ -10,7 +10,7 @@
 
 ## Installation Requirements
 
-Ensure you are in Linux environment and you have Docker installed on your system to run the application.
+Ensure you are in **Linux** environment and you have **Docker** installed on your system to run the application.
 1. Clone this repository:
   ```bash
    git clone https://github.com/Gabbosaur/CodeEvolver.git
@@ -53,7 +53,8 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   - ***user***: Izanagi
   - ***pwd***: Izanagi95
 
-
+## Notes
+Normally, the env file should not be saved in the repository, but to facilitate those who will need to test our solution, it has been included. Similarly, data such as the jenkins_home folder should not be saved either.
 <!-- 
 ## Contributing
 If you wish to contribute to CodeEvolver, feel free to open an issue or submit a pull request. Every contribution is welcome!

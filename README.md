@@ -43,7 +43,7 @@ To start **CodeEvolver**, open 3 different terminals and use the following comma
   ```bash
    streamlit run ui.py
   ```
-3. Go to CodeEvolver UI via browser http://localhost:8501
+3. Open your web browser and navigate to the CodeEvolver UI at http://localhost:8501. You can test the application using our sample COBOL file located in the `resources/easy` folder.
 
 ## Accessing Services
 - **CodeEvolver UI**: http://localhost:8501

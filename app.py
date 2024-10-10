@@ -23,10 +23,11 @@ def standard_response():
     return {"message": "Operation completed successfully"}
 
 @app.post("/translate/")
-def translate(body: dict = Body(...)):
-    if "url" in body:
-        translater(body["url"])
+def translate(body: Body):
+    if body.url:
+        translater(body.url)
     else:
+        print("Missing 'url' in request body")
         return {"error": "Missing 'url' in request body"}
     return standard_response()
 

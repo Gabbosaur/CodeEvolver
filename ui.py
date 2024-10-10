@@ -131,7 +131,6 @@ def main():
             file_name="CodeEvolver_evolved_legacy_project.zip",
             mime="application/zip"
         )
-        shutil.rmtree(LEGACY_PROJECT_FOLDER, ignore_errors=True)
 
 
 if __name__ == "__main__":
